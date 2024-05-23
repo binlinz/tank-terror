@@ -4,10 +4,9 @@ public class Tank{
   
   public Tank(){
     bulletTimer = 5;
-    position  
     
   }
 
-  public void attack()
-  
+  public void attack(){
+  }
 }
