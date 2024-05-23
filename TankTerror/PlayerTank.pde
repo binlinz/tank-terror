@@ -1,8 +1,8 @@
 public class PlayerTank extends Tank { 
   private PowerUp[] playerPower;
   
-  public PlayerTank(PVector pos, int timer) { 
-    super(pos, timer);
+  public PlayerTank() { 
+    super();
   }
   
   public void attack() { 

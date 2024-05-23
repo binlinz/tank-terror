@@ -1,6 +1,6 @@
 public class NPCTank extends Tank { 
-  public NPCTank(PVector pos, int timer) { 
-    super(pos, timer);
+  public NPCTank() { 
+    super();
   }
   
   public void attack() { 
