@@ -4,10 +4,11 @@ public class Tank{
   
   public Tank(){
     bulletTimer = 5;
-    position  
+    position = new PVector(Math.random() * width, Math.random() * height);
     
   }
 
-  public void attack()
+  public void attack() {
+  }
   
 }
