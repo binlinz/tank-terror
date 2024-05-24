@@ -1,18 +1,17 @@
 abstract class Tank{
   PVector position;
   int bulletTimer;
+  int player;
   
-  public Tank(){
+  public Tank(int x, int y, int player){
     bulletTimer = 5;
-    position = new PVector((int) (Math.random() * width), (int) (Math.random() * height));
-    
+    position = new PVector(x, y);
+    this.player = player;
   }
 
   public void destroy(TankTerrorRound round) {
     round.tanks.remove(this);
   }
-
-  abstract void attack();
-  abstract void move();
   
-}
+  
+  //change controls depending on what player is
