@@ -13,11 +13,11 @@ public class TankTerrorRound {
     
   }
   
-  public void spawnPowerUp {
+  public void spawnPowerUp() {
     
   }
   
-  public void win {
+  public int win() {
     
   }
   
