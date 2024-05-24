@@ -2,7 +2,7 @@ public class PlayerTank extends Tank {
   private PowerUp[] playerPower;
   
   public PlayerTank() { 
-    super();
+    playerPower = new PowerUp();
   }
   
   public void attack() { 
