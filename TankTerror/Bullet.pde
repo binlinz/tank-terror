@@ -1,11 +1,12 @@
 public class Bullet {
  private PVector position;
- private String type;
+ private PowerUp special;
+ private Tank parentTank;
+ private int timeRemaining;
  
- public void generatePowerUp() {
+ public void advance() {
  }
  
- public String getType() {
-   return type;
+ public void destroy() {
  }
 }
