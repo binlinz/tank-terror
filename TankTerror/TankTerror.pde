@@ -47,14 +47,11 @@ void mousePressed(){
 }
   
 public void draw(){
-  startRound();
-  displayScore();
-  displayWin();
+  //startRound();
+  //displayScore();
+  //displayWin();
 }
 
+public void startRound(){
   
-
-  public void startRound();
- public void displayScore();
-  
-  public void displayWin();
+}
