@@ -1,13 +1,13 @@
-public class Tank{
+abstract class Tank{
   PVector position;
   int bulletTimer;
   
   public Tank(){
     bulletTimer = 5;
-    position = new PVector(Math.random() * width, Math.random() * height);
+    position = new PVector((int) (Math.random() * width), (int) (Math.random() * height));
     
   }
 
-  public void attack() {
-  }
+  public void destroy(TankTerrorRound round) {
+    round.tanks.remove(this);
   }
