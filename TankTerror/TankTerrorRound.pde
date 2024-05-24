@@ -1,5 +1,5 @@
 public class TankTerrorRound {
-  public Tank[] tanks;
+  public ArrayList<Tank> tanks;
   private color[][] map;
   private Bullet[] bullets;
   private PowerUp[] powerUps;
