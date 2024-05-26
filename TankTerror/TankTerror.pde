@@ -3,9 +3,11 @@ int player2Score;
 boolean multiPlayer;
 boolean gameStarted;
 boolean roundEnd;
+TankTerrorRound round;
+boolean roundStarted;
 
 void setup(){
-  roundEnd = true;
+  gameStarted = false;
   size(1000, 1000);
   background(80, 190, 250);
   player1Score = 0;
@@ -45,21 +47,29 @@ void mousePressed(){
       gameStarted = true;
       background(80, 190, 250);
     }
+    roundEnd = true;
   }
 }
   
 public void draw(){
-  startRound();
-  displayScore();
-  displayWin();
+  if (gameStarted && !roundStarted) {
+    startRound();    
+  }
+  if (gameStarted) {
+  background(80, 190, 250);
+    round.advanceRound();
+  }
+  if (!gameStarted && roundEnd) {
+    displayScore();
+    displayWin();
+  }
 }
 
 public void startRound(){
   if (roundEnd){
     roundEnd = false;
-    TankTerrorRound round = new TankTerrorRound(multiPlayer);
+    round = new TankTerrorRound(multiPlayer);
     round.generateMap();
-    round.advanceRound();
   }
 }
 

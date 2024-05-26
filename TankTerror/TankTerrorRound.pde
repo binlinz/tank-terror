@@ -8,18 +8,22 @@ public class TankTerrorRound {
   
   public TankTerrorRound(boolean multiplayer) {
     this.multiplayer = multiplayer;
-    tanks = new ArrayList<Tanks>();
-    bullets = new ArrayList<Bullets>();
+    tanks = new ArrayList<Tank>();
+    bullets = new ArrayList<Bullet>();
     powerUps = new ArrayList<PowerUp>();
     powerUpTimer = 10;
   }
   
   public color[][] generateMap() {
-    
+    tanks.add(new PlayerTank(1));
+    return null;
   }
   
   public void advanceRound() {
-    
+    for (int i = 0; i < tanks.size(); i++) {
+      tanks.get(i).display();
+      tanks.get(i).move();
+    }
   }
   
   public void spawnPowerUp() {
@@ -27,7 +31,7 @@ public class TankTerrorRound {
   }
   
   public int win() {
-    
+    return 0;
   }
   
 }

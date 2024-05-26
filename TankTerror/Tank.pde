@@ -1,20 +1,34 @@
 abstract class Tank{
-  PVector position;
-  int bulletTimer;
-  int player;
+  public float x;
+  public float y;
+  public int bulletTimer;
+  public double rotation;
   
-  public Tank(int x, int y, int player){
+  public Tank() {
+    
+  }
+  
+  public Tank(int x, int y){
     bulletTimer = 5;
-    position = new PVector(x, y);
-    this.player = player;
+    this.x = x;
+    this.y = y;
+    rotation = 1;
   }
 
   public void destroy(TankTerrorRound round) {
     round.tanks.remove(this);
   }
-<<<<<<< HEAD
-=======
   
+  public void display(){
+    translate(x, y);
+
+    rotate((float) rotation);
+    rect(-25, -25, 50, 50);
+  }  
+  
+  abstract void move();
+  abstract void attack();
   
   //change controls depending on what player is
->>>>>>> bin
+  
+}

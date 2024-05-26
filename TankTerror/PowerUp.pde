@@ -3,7 +3,7 @@ public class PowerUp {
    private String type;
    
    public PowerUp() { 
-      position = new PVector(Math.random() * width, Math.random() * height);
+      position = new PVector(100, 100);
    }
    
    public void generatePowerUp() { 
