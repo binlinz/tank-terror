@@ -5,6 +5,7 @@ boolean gameStarted;
 boolean roundEnd;
 TankTerrorRound round;
 boolean roundStarted;
+boolean[] keys = new boolean[128]; 
 
 void setup(){
   gameStarted = false;
@@ -51,6 +52,14 @@ void mousePressed(){
   }
 }
   
+void keyPressed() {
+    keys[keyCode] = true;
+}
+
+void keyReleased() {
+    keys[keyCode] = false;
+}
+
 public void draw(){
   if (gameStarted && !roundStarted) {
     startRound();    

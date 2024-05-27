@@ -13,25 +13,23 @@ public class PlayerTank extends Tank {
   }
   
   public void move() { 
-    if (keyPressed) {
         if (player == 1) {
-          if (key == 'w') {
-            x += cos((float) rotation);
-            y += sin((float) rotation); 
-          }
-          if (key == 'a') {
-            rotation -= 0.05;
-          }
-          if (key == 's') {
-            x -= cos((float) rotation);
-            y -= sin((float) rotation); 
-          }
-          if (key == 'd') {
-            rotation += 0.05;
-          }
+            if (keys['w'] || keys['W']) { 
+                x += cos((float) rotation);
+                y += sin((float) rotation); 
+            }
+            if (keys['a'] || keys['A']) { 
+                rotation -= 0.05;
+            }
+            if (keys['s'] || keys['S']) { 
+                x -= cos((float) rotation);
+                y -= sin((float) rotation); 
+            }
+            if (keys['d'] || keys['D']) {
+                rotation += 0.05;
+            }
         }
-    }
-  } 
+    } 
   
   public void getPowerUp() { 
   } 
