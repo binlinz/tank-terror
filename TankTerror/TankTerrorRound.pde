@@ -14,11 +14,13 @@ public class TankTerrorRound {
     powerUpTimer = 10;
   }
   
-  public color[][] generateMap() {
+  public void generateMap() {
     tanks.add(new PlayerTank(1));
+    if (multiplayer) {
+      tanks.add(new PlayerTank(2));
+    }
     map = new Maze(8, 8, 125);
     map.makeMaze();
-    return null;
   }
   
   public void advanceRound() {
