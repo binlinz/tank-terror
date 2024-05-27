@@ -13,23 +13,23 @@ public class PlayerTank extends Tank {
   }
   
   public void move() { 
-        if (player == 1) {
-            if (keys['w'] || keys['W']) { 
-                x += cos((float) rotation);
-                y += sin((float) rotation); 
-            }
-            if (keys['a'] || keys['A']) { 
-                rotation -= 0.05;
-            }
-            if (keys['s'] || keys['S']) { 
-                x -= cos((float) rotation);
-                y -= sin((float) rotation); 
-            }
-            if (keys['d'] || keys['D']) {
-                rotation += 0.05;
-            }
+    if (player == 1) {
+        if (keys['w'] || keys['W']) { 
+            x += cos((float) rotation);
+            y += sin((float) rotation); 
         }
-    } 
+        if (keys['a'] || keys['A']) { 
+            rotation -= 0.05;
+        }
+        if (keys['s'] || keys['S']) { 
+            x -= cos((float) rotation);
+            y -= sin((float) rotation); 
+        }
+        if (keys['d'] || keys['D']) {
+            rotation += 0.05;
+        }
+    }
+  } 
   
   public void getPowerUp() { 
   } 
