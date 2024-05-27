@@ -14,28 +14,12 @@ public class MazeUnit{
     this.startY = startY;
     this.unitSize = unitSize;
   }
-  
-  public void makeUnits() {
+    
+  public void makeUnits(){
     stroke(255);
-    if (topWall) {
-      line(startX, startY, startX + unitSize, startY);
-    }
-    if (rightWall) {
-      line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
-    }
-    if (bottomWall) {
-      line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
-    }
-    if (leftWall) {
-      line(startX, startY + unitSize, startX, startY);
-    }
+    line(startX, startY, startX + unitSize, startY);
+    line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
+    line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
+    line(startX, startY + unitSize, startX, startY);
   }
-  
-  //public void makeUnits(){
-  //  stroke(255);
-  //  line(startX, startY, startX + unitSize, startY);
-  //  line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
-  //  line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
-  //  line(startX, startY + unitSize, startX, startY);
-  //}
 }
