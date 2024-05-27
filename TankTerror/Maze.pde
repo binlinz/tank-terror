@@ -7,12 +7,12 @@ public class Maze{
     this.unitSize = unitSize;
     mazeRows = rows;
     mazeCols = cols;
+    map = new MazeUnit[mazeRows][mazeCols];
     for (int j = 0; j < mazeRows; j++) {
       for (int i = 0; i < mazeCols; i++) {
         int startX, startY;
         startX = i * unitSize;
         startY = j * unitSize;
-        map = new MazeUnit[mazeRows][mazeCols];
         map[i][j] = new MazeUnit(startX, startY, unitSize);
       }
     }

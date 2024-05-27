@@ -1,6 +1,6 @@
 public class TankTerrorRound {
   public ArrayList<Tank> tanks;
-  private color[][] map;
+  private Maze map;
   private ArrayList<Bullet> bullets;
   private ArrayList<PowerUp> powerUps;
   private int powerUpTimer;
@@ -16,12 +16,18 @@ public class TankTerrorRound {
   
   public color[][] generateMap() {
     tanks.add(new PlayerTank(1));
-    Maze maze = new Maze(8, 8, 125);
-    maze.makeMaze();
+    map = new Maze(8, 8, 125);
+    map.makeMaze();
     return null;
   }
   
   public void advanceRound() {
+    for (int j = 0; j < map.mazeRows; j++) {
+      for (int i = 0; i < map.mazeCols; i++) {
+        map.map[j][i].makeUnits();
+      }
+    }
+    
     for (int i = 0; i < tanks.size(); i++) {
       tanks.get(i).display();
       tanks.get(i).move();
