@@ -16,6 +16,8 @@ public class TankTerrorRound {
   
   public color[][] generateMap() {
     tanks.add(new PlayerTank(1));
+    Maze maze = new Maze(8, 8, 125);
+    maze.makeMaze();
     return null;
   }
   
