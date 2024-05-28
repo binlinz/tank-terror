@@ -13,14 +13,6 @@ public class Maze{
         int startX, startY;
         startX = i * unitSize;
         startY = j * unitSize;
-        map[i][j] = new MazeUnit(startX, startY, unitSize);
-      }
-    }
-  }
-  
-  public void makeMaze(){
-    for (int i = 0; i < mazeRows; i++) {
-      for (int j = 0; j < mazeCols; j++) {
         boolean[] direction = new boolean[4];
         int left = 0, right = 1, up = 2, down = 3;
         ArrayList<Integer> walls = new ArrayList<Integer>();
@@ -28,32 +20,47 @@ public class Maze{
         walls.add(right);
         walls.add(up);
         walls.add(down);
-        MazeUnit unit = map[i][j];
-        if (i == 0){
+        if (j == 0){
           walls.remove(new Integer(2));
           direction[2] = true;
         }
-        if (i == mazeRows - 1){
+        if (j == mazeCols - 1){
           walls.remove(new Integer(3));
           direction[3] = true;
         }
-        if (j == 0){
+        if (i == 0){
           walls.remove(new Integer(0));
           direction[0] = true;
         }
-        if (j == mazeCols - 1){
+        if (i == mazeRows - 1){
           walls.remove(new Integer(1));
           direction[1] = true;
         }
-        if (walls.size() == 3){
-          int rand = (int) (Math.random() * 3);
-          direction[walls.remove(rand)] = true;
+        
+        if (walls.size() >= 3) {
+          int ran = (int) (Math.random() * 100);
+          if (ran < 50) {
+            int rand = (int) (Math.random() * walls.size());
+            direction[walls.remove(rand)] = true;
+          }
+          if (walls.size() >= 3) {
+            if (ran < 15) {
+              int rand = (int) (Math.random() * walls.size());
+              direction[walls.remove(rand)] = true;
+            }
+          }
         }
-        if (walls.size() == 4){
-          int rand = (int) (Math.random() * 4);
-          direction[walls.remove(rand)] = true;
-        }
-        unit.makeUnits(direction[0], direction[1], direction[2], direction[3]);
+
+        map[i][j] = new MazeUnit(startX, startY, unitSize, direction[0], direction[1], direction[2], direction[3]);
+      }
+    }
+  }
+  
+  public void makeMaze(){
+    for (int i = 0; i < mazeRows; i++) {
+      for (int j = 0; j < mazeCols; j++) {
+        MazeUnit unit = map[i][j];
+        unit.makeUnits();
       }
     }
   }

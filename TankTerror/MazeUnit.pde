@@ -4,22 +4,22 @@ public class MazeUnit{
   int startX, startY;
   int unitSize;
   
-  public MazeUnit(int startX, int startY ,int unitSize){
-    leftWall = true;
-    rightWall = true;
-    topWall = true;
-    bottomWall = true;
+  public MazeUnit(int startX, int startY, int unitSize, boolean left, boolean right, boolean top, boolean down){
+    leftWall = left;
+    rightWall = right;
+    topWall = top;
+    bottomWall = down;
     created = false;
     this.startX = startX;
     this.startY = startY;
     this.unitSize = unitSize;
   }
     
-  public void makeUnits(boolean left, boolean right, boolean up, boolean down){
+  public void makeUnits(){
     stroke(255);
-    if (up) line(startX, startY, startX + unitSize, startY);
-    if (right) line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
-    if (down) line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
-    if (left) line(startX, startY + unitSize, startX, startY);
+    if (topWall) line(startX, startY, startX + unitSize, startY);
+    if (rightWall) line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
+    if (bottomWall) line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
+    if (leftWall) line(startX, startY + unitSize, startX, startY);
   }
 }
