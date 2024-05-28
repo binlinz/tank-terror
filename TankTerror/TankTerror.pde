@@ -16,21 +16,21 @@ void setup(){
   //Select Mode button
   fill(100);
   rect(250, 75, 500, 150);
-  fill(0);
+  fill(209);
   textSize(60);
   text("Select Mode", 345, 160);
   
   //Single Player Button
   fill(100);
   rect(250, 375, 500, 150);
-  fill(0);
+  fill(209);
   textSize(60);
   text("Single Player", 335, 475);
   
   //Two Player Button
   fill(100);
   rect(250, 675, 500, 150); 
-  fill(0);
+  fill(209);
   textSize(60);
   text("Two Player", 350, 775);
   }
