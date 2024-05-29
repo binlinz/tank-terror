@@ -2,6 +2,7 @@ public class Maze{
   int mazeRows, mazeCols;
   int unitSize;
   MazeUnit[][] map;
+  int totalVisits;
   
   public Maze(int rows, int cols, int unitSize){
     this.unitSize = unitSize;
@@ -44,7 +45,7 @@ public class Maze{
             direction[walls.remove(rand)] = true;
           }
           if (walls.size() >= 3) {
-            if (ran < 15) {
+            if (ran < 33) {
               int rand = (int) (Math.random() * walls.size());
               direction[walls.remove(rand)] = true;
             }
@@ -58,7 +59,8 @@ public class Maze{
         map[i][j].fixUnits(i, j);
       }
     }
-    tagVisit(0, 0);
+    fixMaze();
+    tagVisit(0, 0, 0);
     fixMaze();
   }
   
@@ -71,19 +73,19 @@ public class Maze{
     }
   }
   
-  public boolean tagVisit(int i, int j){
+  public boolean tagVisit(int i, int j, int count){
+    totalVisits = count;
     MazeUnit start = map[i][j];
-    if (start.getVisit()){
+    start.visited();
+    totalVisits++;
+    if (totalVisits == 64){
       return true;
     }
-    else{
-      start.visited();
-    }
-    if (!start.getLeft()) tagVisit(i, j - 1);
-    if (!start.getRight()) tagVisit(i, j + 1);
-    if (!start.getDown()) tagVisit(i + 1, j);
-    if (!start.getUp()) tagVisit(i - 1, j);
-    return true; //for compiling
+    if (!start.getLeft() && j > 0 && map[i][j - 1].getVisit() == false) tagVisit(i, j - 1, totalVisits);
+    if (!start.getRight() && j < 7 && map[i][j + 1].getVisit() == false) tagVisit(i, j + 1, totalVisits);
+    if (!start.getDown() && i < 7 && map[i + 1][j].getVisit() == false) tagVisit(i + 1, j, totalVisits);
+    if (!start.getUp() && i > 0 && map[i - 1][j].getVisit() == false) tagVisit(i - 1, j, totalVisits);
+    return true;
   }
   
   public void fixMaze(){
@@ -93,15 +95,27 @@ public class Maze{
           int rand = (int)(Math.random() * 4);
           if (rand == 0){
             map[x][y].leftWall = false;
+            if (x > 0){
+              map[x - 1][y].setRight(false);
+            }
           }
           if (rand == 1){
             map[x][y].rightWall = false;
+            if (x < 7){
+              map[x + 1][y].setLeft(false);
+            }
           }
           if (rand == 2){
             map[x][y].topWall = false;
+            if (y > 0){
+              map[x][y - 1].setDown(false);
+            }
           }
           if (rand == 3){
             map[x][y].bottomWall = false;
+            if (y < 7){
+              map[x][y + 1].setUp(false);
+            }
           }
         }
       }
