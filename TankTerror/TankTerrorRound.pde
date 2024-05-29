@@ -34,6 +34,7 @@ public class TankTerrorRound {
       tanks.get(i).display();
       tanks.get(i).move();
     }
+    map.display();
   }
   
   public void spawnPowerUp() {

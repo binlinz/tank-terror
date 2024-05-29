@@ -27,20 +27,6 @@ public class MazeUnit{
     strokeWeight(1);
   }
   
-  public void fixUnits(int i, int j){
-    if (j > 0 && maze[i][j - 1].getRight() == true){
-      leftWall = true;
-    }
-    if (j < 7 && maze[i][j + 1].getLeft() == true){
-      rightWall = true;
-    }
-    if (i > 0 && maze[i - 1][j].getDown() == true){
-      topWall = true;
-    }
-    if (i < 7 && maze[i + 1][j].getUp() == true){
-      bottomWall = true;
-    }
-  }
   
   public boolean getVisit(){
     return visit;
