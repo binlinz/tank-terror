@@ -39,7 +39,7 @@ public class Maze{
         
         if (walls.size() >= 3) {
           int ran = (int) (Math.random() * 100);
-          if (ran < 50) {
+          if (ran < 75) {
             int rand = (int) (Math.random() * walls.size());
             direction[walls.remove(rand)] = true;
           }
@@ -50,7 +50,6 @@ public class Maze{
             }
           }
         }
-
         map[i][j] = new MazeUnit(startX, startY, unitSize, direction[0], direction[1], direction[2], direction[3]);
       }
     }
@@ -61,37 +60,6 @@ public class Maze{
       for (int j = 0; j < mazeCols; j++) {
         MazeUnit unit = map[i][j];
         unit.makeUnits();
-      }
-    }
-  }
-  
-  public boolean tagVisits(int i, int j){
-    MazeUnit start = map[i][j];
-    if (start.getVisit()){
-      return true;
-    }
-    else{
-      start.visit();
-    }
-     if (!start.getLeft() && j > 0 && !map[i][j - 1].getVisit()) {
-        tagVisits(i, j - 1);
-    }  
-    if (!start.getRight() && j < mazeCols - 1 && !map[i][j + 1].getVisit()) {
-        tagVisits(i, j + 1);
-    }
-    if (!start.getDown() && i < mazeRows - 1 && !map[i + 1][j].getVisit()) {
-        tagVisits(i + 1, j);
-    }
-    if (!start.getUp() && i > 0 && !map[i - 1][j].getVisit()) {
-        tagVisits(i - 1, j);
-    }        
-   return true;
-  }
-  
-  public void checkVisits(){
-    for (int x = 0; x < mazeRows; x++){
-      for (int y = 0; y < mazeCols; y++){
-        map[x][y].fixUnits();
       }
     }
   }
