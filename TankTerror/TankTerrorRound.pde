@@ -21,6 +21,8 @@ public class TankTerrorRound {
     }
     map = new Maze(8, 8, 125);
     map.makeMaze();
+    map.tagVisits(0, 0);
+    map.checkVisits();
   }
   
   public void advanceRound() {

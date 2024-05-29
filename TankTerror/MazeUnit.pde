@@ -1,6 +1,6 @@
 public class MazeUnit{
   boolean leftWall, rightWall, topWall, bottomWall;
-  boolean created;
+  boolean visited;
   int startX, startY;
   int unitSize;
   
@@ -9,7 +9,7 @@ public class MazeUnit{
     rightWall = right;
     topWall = top;
     bottomWall = down;
-    created = false;
+    visited = false;
     this.startX = startX;
     this.startY = startY;
     this.unitSize = unitSize;
@@ -21,5 +21,32 @@ public class MazeUnit{
     if (rightWall) line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
     if (bottomWall) line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
     if (leftWall) line(startX, startY + unitSize, startX, startY);
+  }
+  
+  public void fixUnits(){
+  }
+  
+  public boolean getLeft(){
+    return leftWall;
+  }
+  
+  public boolean getRight(){
+    return rightWall;
+  }
+  
+  public boolean getUp(){
+    return topWall;
+  }
+  
+  public boolean getDown(){
+    return bottomWall;
+  }
+  
+  public void visit(){
+    visited = true;
+  }
+  
+  public boolean getVisit(){
+    return visited;
   }
 }

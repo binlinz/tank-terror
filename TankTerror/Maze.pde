@@ -65,4 +65,34 @@ public class Maze{
     }
   }
   
+  public boolean tagVisits(int i, int j){
+    MazeUnit start = map[i][j];
+    if (start.getVisit()){
+      return true;
+    }
+    else{
+      start.visit();
+    }
+     if (!start.getLeft() && j > 0 && !map[i][j - 1].getVisit()) {
+        tagVisits(i, j - 1);
+    }  
+    if (!start.getRight() && j < mazeCols - 1 && !map[i][j + 1].getVisit()) {
+        tagVisits(i, j + 1);
+    }
+    if (!start.getDown() && i < mazeRows - 1 && !map[i + 1][j].getVisit()) {
+        tagVisits(i + 1, j);
+    }
+    if (!start.getUp() && i > 0 && !map[i - 1][j].getVisit()) {
+        tagVisits(i - 1, j);
+    }        
+   return true;
+  }
+  
+  public void checkVisits(){
+    for (int x = 0; x < mazeRows; x++){
+      for (int y = 0; y < mazeCols; y++){
+        map[x][y].fixUnits();
+      }
+    }
+  }
 }
