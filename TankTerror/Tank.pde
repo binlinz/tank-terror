@@ -42,7 +42,7 @@ abstract class Tank{
     fill(col);
     rect(-25, -25, 50, 50);
     fill(0);
-    rect(-5, -7, 50, 15);
+    rect(-5, -7, 45, 15);
     popMatrix();
   }  
   
