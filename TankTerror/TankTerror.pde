@@ -9,7 +9,7 @@ boolean[] keys = new boolean[128];
 
 void setup(){
   gameStarted = false;
-  size(1010, 1010);
+  size(1001, 1001);
   background(80, 190, 250);
   player1Score = 0;
   player2Score = 0;
