@@ -27,6 +27,10 @@ public class PlayerTank extends Tank {
         if (keys['d'] || keys['D']) {
             rotation += 0.05;
         }
+        if (keys['q'] || keys['Q']) { 
+          Bullet bullet = new Bullet(x, y, this); 
+          bullet.advance();
+        }
     }
     if (player == 2) {
         if (keys[UP]) { 
