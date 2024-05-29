@@ -31,7 +31,7 @@ abstract class Tank{
     }
   }
 
-  public void destroy(TankTerrorRound round) {
+  public void destroy() {
     round.tanks.remove(this);
   }
   
