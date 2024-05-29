@@ -39,7 +39,7 @@ public class Maze{
         
         if (walls.size() >= 3) {
           int ran = (int) (Math.random() * 100);
-          if (ran < 50) {
+          if (ran < 75) {
             int rand = (int) (Math.random() * walls.size());
             direction[walls.remove(rand)] = true;
           }
@@ -50,7 +50,6 @@ public class Maze{
             }
           }
         }
-
         map[i][j] = new MazeUnit(startX, startY, unitSize, direction[0], direction[1], direction[2], direction[3]);
       }
     }
@@ -64,5 +63,4 @@ public class Maze{
       }
     }
   }
-  
 }
