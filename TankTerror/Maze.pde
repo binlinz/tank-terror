@@ -58,17 +58,17 @@ public class Maze{
     tagVisit(0, 0);
     boolean hasIssue = hasMoreIssues();
     System.out.println(hasIssue);
-          fixMaze();
+          //fixMaze();
           
 
     //while (hasIssue) {
-      for (int i = 0; i < mazeRows; i++) {
-        for (int j = 0; j < mazeCols; j++) {
-          map[i][j].visit = false;
-        }
-      }
+      //for (int i = 0; i < mazeRows; i++) {
+      //  for (int j = 0; j < mazeCols; j++) {
+      //    map[i][j].visit = false;
+      //  }
+      //}
     //  fixMaze();
-      tagVisit(0, 0);
+      //tagVisit(0, 0);
     //  hasIssue = hasMoreIssues();
     //}
   }
