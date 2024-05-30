@@ -57,7 +57,6 @@ public class Maze{
     }
     tagVisit(0, 0);
     boolean hasIssue = hasMoreIssues();
-    System.out.println(hasIssue);
     while (hasIssue) {
       fixMaze();
       clearTags();
@@ -78,7 +77,6 @@ public class Maze{
       for (int i = 0; i < mazeRows; i++) {
         for (int j = 0; j < mazeCols; j++) {
           if (map[i][j].visit == false) {
-            System.out.println(i + " " + j);
             return true;
           }
         }
@@ -145,7 +143,6 @@ public class Maze{
           if ((map[x][y].getDown() || (map[x][y + 1].getUp() && y != mazeCols - 1)) && y != mazeCols - 1) {
             walls.add(3);
           }
-          System.out.println(walls.size());
           if (walls.size() == 0) break;
           int rand = (int)(Math.random() * walls.size());
           int wallRemove = walls.remove(rand);
