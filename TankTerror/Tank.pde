@@ -46,6 +46,15 @@ abstract class Tank{
     popMatrix();
   }  
   
+  public boolean canMove() {
+    color pixel = get((int) x + 23, (int) y + 23);
+    if (red(pixel) == 255 && blue(pixel) == 255 && green(pixel) == 255){
+      return false;
+    }
+    return true;
+    }
+    //check the front 35 pixels for white
+  
   abstract void move();
   abstract void attack();
   
