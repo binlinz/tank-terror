@@ -24,7 +24,7 @@ public class MazeUnit{
     if (rightWall) line(startX + unitSize, startY, startX + unitSize, startY + unitSize);
     if (bottomWall) line(startX + unitSize, startY + unitSize, startX, startY + unitSize);
     if (leftWall) line(startX, startY + unitSize, startX, startY);
-    strokeWeight(1);
+    strokeWeight(0);
   }
   
   
