@@ -32,11 +32,9 @@ public class TankTerrorRound {
     
     for (int i = 0; i < tanks.size(); i++) {
       tanks.get(i).display();
-      if (tanks.get(i).canMove()){
-         tanks.get(i).move();
-      }
+      tanks.get(i).move();
     }
-    map.display();
+    //map.display();
   }
   
   public void spawnPowerUp() {

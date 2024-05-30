@@ -23,7 +23,7 @@ public class PlayerTank extends Tank {
               rotation = 2 * Math.PI + rotation % (2 * Math.PI);
             }
         }
-        if (keys['s'] || keys['S']) { 
+        if (keys['s'] || keys['S'] && canMoveBackward()) { 
             x -= cos((float) rotation);
             y -= sin((float) rotation); 
         }
@@ -53,11 +53,6 @@ public class PlayerTank extends Tank {
         }
     }
   } 
-  
-  public boolean canMoveForward() {
-    return true;
-    //check the front 35 pixels for white
-  }
   
   public void getPowerUp() { 
   } 
