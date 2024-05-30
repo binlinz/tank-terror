@@ -13,16 +13,19 @@ public class Bullet {
  
  public void display() { 
    circle(x, y, 8); 
+   fill(255);
+   stroke(0);
  } 
  
  public void advance() {
+   int start = millis();
    while(timeElapsed <= 5000) {
-     timeElapsed = millis();
-     display();
+     int end = millis();                                                                                                                                                                                          
+     timeElapsed = end-start;
      x += cos((float) parentTank.rotation);
      y += sin((float) parentTank.rotation); 
+     display();
    }
-   timeElapsed = 0;
  }
  
  public void destroy() {
