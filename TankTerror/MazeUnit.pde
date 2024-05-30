@@ -67,4 +67,8 @@ public class MazeUnit{
   public void setDown(boolean down){
     bottomWall = down;
   }
+  
+  public void setVisit(boolean val) {
+    visit = val;
+  }
 }

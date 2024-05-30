@@ -23,19 +23,19 @@ public class Maze{
         walls.add(up);
         walls.add(down);
         if (j == 0){
-          walls.remove(new Integer(2));
+          walls.remove(Integer.valueOf(2));
           direction[2] = true;
         }
         if (j == mazeCols - 1){
-          walls.remove(new Integer(3));
+          walls.remove(Integer.valueOf(3));
           direction[3] = true;
         }
         if (i == 0){
-          walls.remove(new Integer(0));
+          walls.remove(Integer.valueOf(0));
           direction[0] = true;
         }
         if (i == mazeRows - 1){
-          walls.remove(new Integer(1));
+          walls.remove(Integer.valueOf(1));
           direction[1] = true;
         }
         
@@ -58,25 +58,27 @@ public class Maze{
     tagVisit(0, 0);
     boolean hasIssue = hasMoreIssues();
     System.out.println(hasIssue);
-          //fixMaze();
-          
-
-    //while (hasIssue) {
-      //for (int i = 0; i < mazeRows; i++) {
-      //  for (int j = 0; j < mazeCols; j++) {
-      //    map[i][j].visit = false;
-      //  }
-      //}
-    //  fixMaze();
-      //tagVisit(0, 0);
-    //  hasIssue = hasMoreIssues();
-    //}
+    while (hasIssue) {
+      fixMaze();
+      clearTags();
+      tagVisit(0, 0);
+      hasIssue = hasMoreIssues();
+    }
+  }
+  
+  public void clearTags() {
+    for (int i = 0; i < mazeRows; i++) {
+      for (int j = 0; j < mazeCols; j++) {
+        map[i][j].setVisit(false);
+      }
+    }
   }
   
   public boolean hasMoreIssues() {
       for (int i = 0; i < mazeRows; i++) {
         for (int j = 0; j < mazeCols; j++) {
-          if (!map[i][j].visit) {
+          if (map[i][j].visit == false) {
+            System.out.println(i + " " + j);
             return true;
           }
         }
@@ -128,20 +130,20 @@ public class Maze{
   }
   
   public void fixMaze(){
-    for (int x = 0; x < mazeRows; x++){
-      for (int y = 0; y < mazeCols; y++){
+    for (int y = 0; y < mazeRows; y++){
+      for (int x = 0; x < mazeCols; x++){
         if (map[x][y].getVisit() == false){
           ArrayList<Integer> walls = new ArrayList<Integer>();
-          if (map[x][y].getLeft() && x != 0) {
+          if ((map[x][y].getLeft() || (map[x - 1][y].getRight() && x != 0)) && x != 0) {
             walls.add(0);
           }
-          if (map[x][y].getRight() && x != mazeCols - 1) {
+          if ((map[x][y].getRight() || (map[x + 1][y].getLeft() && x != mazeRows - 1)) && x != mazeRows - 1) {
             walls.add(1);
           }
-          if (map[x][y].getUp() && y != 0) {
+          if ((map[x][y].getUp() || (map[x][y - 1].getDown() && y != 0)) && y != 0) {
             walls.add(2);
           }
-          if (map[x][y].getDown() && x != mazeRows - 1) {
+          if ((map[x][y].getDown() || (map[x][y + 1].getUp() && y != mazeCols - 1)) && y != mazeCols - 1) {
             walls.add(3);
           }
           System.out.println(walls.size());
