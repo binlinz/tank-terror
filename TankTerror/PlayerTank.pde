@@ -18,19 +18,23 @@ public class PlayerTank extends Tank {
   
   public void move() { 
     if (player == 1) {
-        if (keys['w'] || keys['W']) { 
+        if ((keys['w'] || keys['W']) && canMoveForward()) { 
             x += cos((float) rotation);
             y += sin((float) rotation); 
         }
         if (keys['a'] || keys['A']) { 
             rotation -= 0.05;
+            if (rotation < 0) {
+              rotation = 2 * Math.PI + rotation % (2 * Math.PI);
+            }
         }
-        if (keys['s'] || keys['S']) { 
+        if (keys['s'] || keys['S'] && canMoveBackward()) { 
             x -= cos((float) rotation);
             y -= sin((float) rotation); 
         }
         if (keys['d'] || keys['D']) {
             rotation += 0.05;
+            rotation %= (2 * Math.PI);
         }
     }
     if (player == 2) {
@@ -40,6 +44,9 @@ public class PlayerTank extends Tank {
         }
         if (keys[LEFT]) { 
             rotation -= 0.05;
+            if (rotation < 0) {
+              rotation = 2 * Math.PI + rotation % (2 * Math.PI);
+            }
         }
         if (keys[DOWN]) { 
             x -= cos((float) rotation);
@@ -47,9 +54,9 @@ public class PlayerTank extends Tank {
         }
         if (keys[RIGHT]) {
             rotation += 0.05;
+            rotation %= (2 * Math.PI);
         }
     }
-
   } 
   
   public void getPowerUp() { 

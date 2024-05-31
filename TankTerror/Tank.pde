@@ -3,7 +3,11 @@ abstract class Tank{
   public float y;
   public int bulletTimer;
   public double rotation;
-  private color col;
+  private color col;  
+  Detector BorderFL;
+  Detector BorderFR;
+  Detector BorderBL;
+  Detector BorderBR;
   
   public Tank() {
     
@@ -41,10 +45,28 @@ abstract class Tank{
     rotate((float) rotation);
     fill(col);
     rect(-25, -25, 50, 50);
+    BorderFL = new Detector ((int)x + 26, (int)y - 26, 5);
+    BorderFR = new Detector ((int)x + 26, (int)y + 26, 5);
+    BorderBL = new Detector ((int)x - 26, (int)y + 26, 5); 
+    BorderBR = new Detector ((int)x - 26, (int)x - 26, 5);
     fill(0);
-    rect(-5, -7, 50, 15);
+    rect(-5, -7, 45, 15);
     popMatrix();
   }  
+  
+  public boolean canMoveForward() {
+    if (BorderFL.detect()){
+      return false;
+    }
+    if (BorderFR.detect()){
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean canMoveBackward(){
+    return true;
+  }
   
   abstract void move();
   abstract void attack();

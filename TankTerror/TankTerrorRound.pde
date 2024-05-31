@@ -38,6 +38,7 @@ public class TankTerrorRound {
       }
       tanks.get(i).attack();
     }
+    //map.display();
   }
   
   public void spawnPowerUp() {
