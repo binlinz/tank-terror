@@ -12,6 +12,7 @@ public class Bullet {
  }
  
  public void display() { 
+   frameRate(5);
    circle(x, y, 8); 
    fill(255);
    stroke(0);
