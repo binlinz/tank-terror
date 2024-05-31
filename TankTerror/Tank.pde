@@ -10,10 +10,6 @@ abstract class Tank{
   Detector BorderB;
   
   public Tank() {
-    BorderR = new Detector ((int)x + 26, (int)y, 5);
-    BorderB = new Detector ((int)x, (int)y + 26, 5);
-    BorderL = new Detector ((int)x - 26, (int)y, 5); 
-    BorderF = new Detector ((int)x, (int)y - 26, 5);
 
   }
   
@@ -37,6 +33,11 @@ abstract class Tank{
     if (num == 5) {
       col = color(38, 85, 240);
     }
+        BorderR = new Detector ((int)x + 26, (int)y, 5);
+    BorderB = new Detector ((int)x, (int)y + 26, 5);
+    BorderL = new Detector ((int)x - 26, (int)y, 5); 
+    BorderF = new Detector ((int)x, (int)y - 26, 5);
+
   }
 
   public void destroy() {
