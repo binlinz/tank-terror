@@ -1,7 +1,7 @@
 public class TankTerrorRound {
   public ArrayList<Tank> tanks;
   private Maze map;
-  private ArrayList<Bullet> bullets;
+  public ArrayList<Bullet> bullets;
   private ArrayList<PowerUp> powerUps;
   private int powerUpTimer;
   private boolean multiplayer;
@@ -33,6 +33,10 @@ public class TankTerrorRound {
     for (int i = 0; i < tanks.size(); i++) {
       tanks.get(i).display();
       tanks.get(i).move();
+      if(bullets.size() > 0) {
+        bullets.get(i).display(); 
+      }
+      tanks.get(i).attack();
     }
   }
   
