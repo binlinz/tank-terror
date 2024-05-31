@@ -60,7 +60,7 @@ public class Maze{
     while (hasIssue) {
       fixMaze();
       clearTags();
-      tagVisit(0, 0);
+      tagVisit((int) (Math.random() * mazeRows), (int) (Math.random() * mazeCols));
       hasIssue = hasMoreIssues();
     }
   }
