@@ -64,7 +64,7 @@ public class Maze{
       hasIssue = hasMoreIssues();
     }
   }
-  
+    
   public void clearTags() {
     for (int i = 0; i < mazeRows; i++) {
       for (int j = 0; j < mazeCols; j++) {
@@ -174,4 +174,5 @@ public class Maze{
       }
     }
   }
+  
 }

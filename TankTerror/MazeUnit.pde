@@ -71,4 +71,5 @@ public class MazeUnit{
   public void setVisit(boolean val) {
     visit = val;
   }
+
 }
