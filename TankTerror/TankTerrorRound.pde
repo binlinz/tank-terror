@@ -39,8 +39,8 @@ public class TankTerrorRound {
     for (int i = 0; i < bullets.size(); i++) {
         Bullet bullet = bullets.get(i);
         if (bullet.isActive()) {
-            bullet.advance();
             bullet.display();
+            bullet.advance();
         } else {
             bullets.remove(i);
         }

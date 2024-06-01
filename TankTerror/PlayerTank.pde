@@ -1,6 +1,8 @@
 public class PlayerTank extends Tank { 
   private ArrayList<PowerUp> playerPower;
   private int player;
+  private int lastTime;
+  private boolean firstTime = true;
   
   public PlayerTank(int num) { 
     super((int)(Math.random() * 8) * 125 + 72, (int)(Math.random() * 8) * 125 + 72, num);
@@ -9,18 +11,25 @@ public class PlayerTank extends Tank {
   }
   
   public void attack() { 
-    if(player == 1) { 
-      if (keys['q'] || keys['Q']) { 
-            Bullet bullet = new Bullet(x, y, this); 
-            round.bullets.add(bullet);
+    int currentTime = millis();
+    if(currentTime - lastTime >= 5000 || firstTime) {
+      if(player == 1) { 
+        if (keys['q'] || keys['Q']) { 
+          Bullet bullet = new Bullet(x, y, this); 
+          round.bullets.add(bullet);
+          lastTime = currentTime;
+          firstTime = false;
+        }
+      } 
+      if(player == 2) { 
+        if (keys['/']) { 
+          Bullet bullet = new Bullet(x, y, this); 
+          round.bullets.add(bullet);
+          lastTime = currentTime;
+          firstTime = false;
+        }
       }
-    } 
-    if(player == 2) { 
-      if (keys['/']) { 
-            Bullet bullet = new Bullet(x, y, this); 
-            round.bullets.add(bullet);
-      }
-    } 
+    }
   }
   
   public void move() { 
