@@ -3,7 +3,7 @@ public class PlayerTank extends Tank {
   private int player;
   
   public PlayerTank(int num) { 
-    super((int)(Math.random() * (width - 100)), (int)(Math.random() * (height - 100)), num);
+    super((int)(Math.random() * 8) * 125 + 72, (int)(Math.random() * 8) * 125 + 72, num);
     player = num;
     playerPower = new ArrayList<PowerUp>();
   }
