@@ -9,11 +9,18 @@ public class PlayerTank extends Tank {
   }
   
   public void attack() { 
-    if (keys['q'] || keys['Q']) { 
-          Bullet bullet = new Bullet(x, y, this); 
-          round.bullets.add(bullet);
-          bullet.advance();
-    }
+    if(player == 1) { 
+      if (keys['q'] || keys['Q']) { 
+            Bullet bullet = new Bullet(x, y, this); 
+            round.bullets.add(bullet);
+      }
+    } 
+    if(player == 2) { 
+      if (keys['/']) { 
+            Bullet bullet = new Bullet(x, y, this); 
+            round.bullets.add(bullet);
+      }
+    } 
   }
   
   public void move() { 

@@ -33,11 +33,19 @@ public class TankTerrorRound {
     for (int i = 0; i < tanks.size(); i++) {
       tanks.get(i).display();
       tanks.get(i).move();
-      if(bullets.size() > 0) {
-        bullets.get(i).display(); 
-      }
       tanks.get(i).attack();
     }
+    
+    for (int i = 0; i < bullets.size(); i++) {
+        Bullet bullet = bullets.get(i);
+        if (bullet.isActive()) {
+            bullet.advance();
+            bullet.display();
+        } else {
+            bullets.remove(i);
+        }
+    }
+    
     //map.display();
   }
   
