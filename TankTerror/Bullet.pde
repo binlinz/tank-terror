@@ -30,9 +30,13 @@ public class Bullet {
       }
   }
 
-  public void destroy() {
-      
-  }
+  public boolean destroyed(Tank tank) {
+    if(tank == parentTank) { 
+      return false;
+    }
+    float distance = dist(position.x, position.y, tank.x, tank.y);
+    return distance < 30; 
+}
 
   public boolean isActive() {
       return active;

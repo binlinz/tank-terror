@@ -31,20 +31,29 @@ public class TankTerrorRound {
     }
     
     for (int i = 0; i < tanks.size(); i++) {
-      tanks.get(i).display();
-      tanks.get(i).move();
-      tanks.get(i).attack();
+      Tank tank = tanks.get(i);
+      tank.display();
+      tank.move();
+      tank.attack();
     }
     
     for (int i = 0; i < bullets.size(); i++) {
-        Bullet bullet = bullets.get(i);
-        if (bullet.isActive()) {
-            bullet.display();
-            bullet.advance();
-        } else {
-            bullets.remove(i);
+      Bullet bullet = bullets.get(i);
+      if (bullet.isActive()) {
+        bullet.display();
+        bullet.advance();
+      for (int j = tanks.size() - 1; j >= 0; j--) {
+        Tank tank = tanks.get(j);
+        if (bullet.destroyed(tank)) {
+          tanks.remove(j);
+          bullets.remove(i);
+          break; 
         }
+      }
+    } else {
+        bullets.remove(i);
     }
+  }
     
     //map.display();
   }
