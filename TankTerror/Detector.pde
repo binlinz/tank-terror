@@ -10,13 +10,12 @@ public class Detector{
   }
   
   public boolean detect(){
-    System.out.println(x);
-    System.out.println(y);
     color pixel = get(x, y);
     System.out.println(red(pixel));
     System.out.println(blue(pixel));
     System.out.println(green(pixel));
-    if (red(pixel) == 255 && blue(pixel) == 255 && green(pixel) == 255){
+    ellipse(x,y, 4,4);
+    if (red(pixel) >= 200 && blue(pixel) >= 200 && green(pixel) >= 200){
       return true;
     }
     return false;

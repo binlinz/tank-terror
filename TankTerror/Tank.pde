@@ -4,10 +4,15 @@ abstract class Tank{
   public int bulletTimer;
   public double rotation;
   private color col;  
-  Detector BorderFL;
-  Detector BorderFR;
-  Detector BorderBL;
-  Detector BorderBR;
+  Detector BorderR;
+  Detector BorderB;
+  Detector BorderL;
+  Detector BorderU;
+  Detector BorderUR;
+  Detector BorderDR;
+  Detector BorderUL;
+  Detector BorderDL;
+
   
   public Tank() {
     
@@ -44,27 +49,74 @@ abstract class Tank{
     translate(x, y);
     rotate((float) rotation);
     fill(col);
-    rect(-25, -25, 50, 50);
-    BorderFL = new Detector ((int)x + 26, (int)y - 26, 5);
-    BorderFR = new Detector ((int)x + 26, (int)y + 26, 5);
-    BorderBL = new Detector ((int)x - 26, (int)y + 26, 5); 
-    BorderBR = new Detector ((int)x - 26, (int)x - 26, 5);
+    ellipse(0, 0, 50, 50);
     fill(0);
-    rect(-5, -7, 45, 15);
+    rect(-5, -7, 30, 16);
+    BorderR = new Detector ((int)x + 26, (int)y, 5);
+    BorderB = new Detector ((int)x, (int)y + 26, 5);
+    BorderL = new Detector ((int)x - 26, (int)y, 5); 
+    BorderU = new Detector ((int)x, (int)y - 26, 5);
+    BorderUR = new Detector((int) (x + 18.3847763109), (int) (y - 18.3847763109), 5);
+    BorderDR = new Detector((int) (x + 18.3847763109), (int) (y + 18.3847763109), 5);
+    BorderUL = new Detector((int) (x - 18.3847763109), (int) (y - 18.3847763109), 5);
+    BorderDL = new Detector((int) (x - 18.3847763109), (int) (y + 18.3847763109), 5);
     popMatrix();
   }  
   
   public boolean canMoveForward() {
-    if (BorderFL.detect()){
-      return false;
+    if (rotation == 0) {
+      return !BorderR.detect() && !BorderUR.detect() && !BorderDR.detect();
     }
-    if (BorderFR.detect()){
-      return false;
+    if (rotation > 0 && rotation < (Math.PI * 1 / 2)) {
+      return !BorderR.detect() && !BorderB.detect() && !BorderDR.detect();
+    }
+    if (rotation == (Math.PI * 1 / 2)) {
+      return !BorderB.detect() && !BorderDR.detect() && !BorderDL.detect();
+    }
+    if (rotation >= (Math.PI * 1 / 2) && rotation < (Math.PI)) {
+      return !BorderB.detect() && !BorderL.detect() && !BorderDL.detect();
+    }
+    if (rotation == (Math.PI)) {
+      return !BorderL.detect() && !BorderUL.detect() && !BorderDL.detect();
+    }
+    if (rotation >= (Math.PI) && rotation < (Math.PI * 3 / 2)) {
+      return !BorderL.detect() && !BorderU.detect() && !BorderUL.detect();
+    }
+    if (rotation == (Math.PI * 3 / 2)) {
+      return !BorderL.detect() && !BorderR.detect() && !BorderU.detect();
+    }
+    if (rotation >= (Math.PI * 3 / 2) && rotation < (Math.PI * 2)) {
+      return !BorderU.detect() && !BorderR.detect() && !BorderUR.detect();
     }
     return true;
   }
   
   public boolean canMoveBackward(){
+    if (rotation == (Math.PI)) {
+      return !BorderR.detect() && !BorderUR.detect() && !BorderDR.detect();
+    }
+    if (rotation >= (Math.PI) && rotation < (Math.PI * 3 / 2)) {
+      return !BorderR.detect() && !BorderB.detect() && !BorderDR.detect();
+    }
+    if (rotation == (Math.PI * 3 / 2)) {
+      return !BorderB.detect() && !BorderDR.detect() && !BorderDL.detect();
+    }
+    if (rotation >= (Math.PI * 3 / 2) && rotation < (Math.PI * 2)) {
+      return !BorderB.detect() && !BorderL.detect() && !BorderDL.detect();
+    }
+    if (rotation == 0) {
+      return !BorderL.detect() && !BorderUL.detect() && !BorderDL.detect();
+    }
+    if (rotation >= 0 && rotation < (Math.PI * 1 / 2)) {
+      return !BorderL.detect() && !BorderU.detect() && !BorderUL.detect();
+    }
+    if (rotation == (Math.PI * 1 / 2)) {
+      return !BorderL.detect() && !BorderR.detect() && !BorderU.detect();
+    }
+    if (rotation >= (Math.PI * 1 / 2) && rotation < (Math.PI)) {
+      return !BorderU.detect() && !BorderR.detect() && !BorderUR.detect();
+    }
+
     return true;
   }
   

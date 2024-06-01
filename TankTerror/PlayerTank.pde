@@ -38,7 +38,7 @@ public class PlayerTank extends Tank {
         }
     }
     if (player == 2) {
-        if (keys[UP]) { 
+        if (keys[UP] && canMoveForward()) { 
             x += cos((float) rotation);
             y += sin((float) rotation); 
         }
@@ -48,7 +48,7 @@ public class PlayerTank extends Tank {
               rotation = 2 * Math.PI + rotation % (2 * Math.PI);
             }
         }
-        if (keys[DOWN]) { 
+        if (keys[DOWN] && canMoveBackward()) { 
             x -= cos((float) rotation);
             y -= sin((float) rotation); 
         }
