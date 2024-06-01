@@ -4,13 +4,13 @@ abstract class Tank{
   public int bulletTimer;
   public double rotation;
   private color col;  
-  Detector BorderR;
-  Detector BorderF;
-  Detector BorderL;
-  Detector BorderB;
+  Detector BorderFL;
+  Detector BorderFR;
+  Detector BorderBL;
+  Detector BorderBR;
   
   public Tank() {
-
+    
   }
   
   public Tank(int x, int y, int num){
@@ -33,11 +33,6 @@ abstract class Tank{
     if (num == 5) {
       col = color(38, 85, 240);
     }
-        BorderR = new Detector ((int)x + 26, (int)y, 5);
-    BorderB = new Detector ((int)x, (int)y + 26, 5);
-    BorderL = new Detector ((int)x - 26, (int)y, 5); 
-    BorderF = new Detector ((int)x, (int)y - 26, 5);
-
   }
 
   public void destroy() {
@@ -49,35 +44,27 @@ abstract class Tank{
     translate(x, y);
     rotate((float) rotation);
     fill(col);
-    ellipse(0, 0, 50, 50);
+    rect(-25, -25, 50, 50);
+    BorderFL = new Detector ((int)x + 26, (int)y - 26, 5);
+    BorderFR = new Detector ((int)x + 26, (int)y + 26, 5);
+    BorderBL = new Detector ((int)x - 26, (int)y + 26, 5); 
+    BorderBR = new Detector ((int)x - 26, (int)x - 26, 5);
     fill(0);
     rect(-5, -7, 45, 15);
     popMatrix();
   }  
   
   public boolean canMoveForward() {
-    if (BorderF.detect()){
+    if (BorderFL.detect()){
       return false;
     }
-    if (BorderL.detect()){
-      return false;
-    }
-    if (BorderR.detect()){
+    if (BorderFR.detect()){
       return false;
     }
     return true;
   }
   
   public boolean canMoveBackward(){
-    if (BorderB.detect()){
-      return false;
-    }
-    if (BorderL.detect()){
-      return false;
-    }
-    if (BorderR.detect()){
-      return false;
-    }
     return true;
   }
   
