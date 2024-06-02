@@ -1,11 +1,11 @@
 public class Bullet {
-  PVector position;
-  PVector velocity;
+  private PVector position;
+  private PVector velocity;
   private PowerUp special;
   private Tank parentTank;
   private int timeCreated;
   private int timeElapsed;
-  public boolean active;
+  private boolean active;
 
   public Bullet(float x, float y, Tank parent) {
       parentTank = parent;
