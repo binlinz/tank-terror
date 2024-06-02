@@ -1,25 +1,16 @@
 public class Bullet {
-<<<<<<< HEAD
   PVector position;
   PVector velocity;
   PVector checkLeftPosition;
   PVector checkRightPosition;
   PVector checkUpPosition;
   PVector checkDownPosition;
-=======
-  private PVector position;
-  private PVector velocity;
->>>>>>> 33576eecfa1d6333ea54758f063bec5368d637a7
   private PowerUp special;
   private Tank parentTank;
   private int timeCreated;
   private int timeElapsed;
-<<<<<<< HEAD
   private float rotation;
   public boolean active;
-=======
-  private boolean active;
->>>>>>> 33576eecfa1d6333ea54758f063bec5368d637a7
 
   public Bullet(float x, float y, Tank parent) {
       parentTank = parent;
@@ -38,7 +29,7 @@ public class Bullet {
   public void advance() {
       int currentTime = millis();
       int timeElapsed = currentTime - timeCreated;
-      if (timeElapsed <= 5000) {            
+      if (timeElapsed <= 8500) {            
           position.add(velocity);
       } else {
          active = false;

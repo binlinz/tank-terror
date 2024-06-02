@@ -12,7 +12,7 @@ public class PlayerTank extends Tank {
   
   public void attack() { 
     int currentTime = millis();
-    if(currentTime - lastTime >= 5000 || firstTime) {
+    if(currentTime - lastTime >= 8500 || firstTime) {
       if(player == 1) { 
         if (keys['q'] || keys['Q']) { 
           Bullet bullet = new Bullet(x, y, this); 
