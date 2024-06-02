@@ -29,7 +29,7 @@ public class Bullet {
   public void advance() {
       int currentTime = millis();
       int timeElapsed = currentTime - timeCreated;
-      if (timeElapsed <= 5000) {            
+      if (timeElapsed <= 8500) {            
           position.add(velocity);
       } else {
          active = false;
