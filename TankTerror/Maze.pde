@@ -175,4 +175,14 @@ public class Maze{
     }
   }
   
+  public int countWalls(){
+    int count = 0;
+    for (int y = 0; y < mazeRows; y++){
+      for (int x = 0; x < mazeCols; x++){
+        count += map[x][y].walls();
+      }
+    }
+    return count;
+  }
+  
 }

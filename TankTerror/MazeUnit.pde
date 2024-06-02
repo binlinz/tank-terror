@@ -27,6 +27,14 @@ public class MazeUnit{
     strokeWeight(0);
   }
   
+  public int walls(){
+    int count = 0;
+    if (leftWall) count++;
+    if (rightWall) count++;
+    if (topWall) count++;
+    if (bottomWall) count++;
+    return count;
+  }
   
   public boolean getVisit(){
     return visit;

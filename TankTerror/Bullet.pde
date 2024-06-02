@@ -1,14 +1,20 @@
 public class Bullet {
   PVector position;
   PVector velocity;
+  PVector checkLeftPosition;
+  PVector checkRightPosition;
+  PVector checkUpPosition;
+  PVector checkDownPosition;
   private PowerUp special;
   private Tank parentTank;
   private int timeCreated;
   private int timeElapsed;
+  private float rotation;
   public boolean active;
 
   public Bullet(float x, float y, Tank parent) {
       parentTank = parent;
+      rotation = (float)parentTank.rotation;
       position = new PVector(x + 10 * cos((float) parentTank.rotation), y + 10 * sin((float) parentTank.rotation));
       velocity = new PVector(3 * cos((float) parentTank.rotation), 3 * sin((float) parentTank.rotation)); 
       timeCreated = millis();
@@ -40,5 +46,38 @@ public class Bullet {
 
   public boolean isActive() {
       return active;
+  }
+  
+  public void bounce(){
+    checkLeftPosition = new PVector((position.x - 7), position.y);
+    checkRightPosition = new PVector((position.x + 7), position.y);
+    checkUpPosition = new PVector((position.x), position.y - 7);
+    checkDownPosition = new PVector((position.x), position.y + 7);
+    color pixelL = get((int)checkLeftPosition.x, (int)checkLeftPosition.y);
+    color pixelR = get((int)checkRightPosition.x, (int)checkRightPosition.y);
+    color pixelU = get((int)checkUpPosition.x, (int)checkUpPosition.y);
+    color pixelD = get((int)checkDownPosition.x, (int)checkDownPosition.y);
+    if (red(pixelL) >= 200 && blue(pixelL) >= 200 && green(pixelL) >= 200){
+      rotation *= -1;
+      rotation += Math.PI;
+      velocity.x = 3 * cos((float) (rotation));
+      velocity.y = 3 * sin((float) (rotation));
+    }
+    if (red(pixelR) >= 200 && blue(pixelR) >= 200 && green(pixelR) >= 200){
+      rotation *= -1;
+      rotation += Math.PI;
+      velocity.x = 3 * cos((float) (rotation));
+      velocity.y = 3 * sin((float) (rotation));
+    }
+    if (red(pixelU) >= 200 && blue(pixelU) >= 200 && green(pixelU) >= 200){
+      rotation *= - 1;
+      velocity.x = 3 * cos((float) (rotation));
+      velocity.y = 3 * sin((float) (rotation));
+    }
+    if (red(pixelD) >= 200 && blue(pixelD) >= 200 && green(pixelD) >= 200){
+      rotation *= - 1;
+      velocity.x = 3 * cos((float) (rotation));
+      velocity.y = 3 * sin((float) (rotation));
+    }
   }
 }
