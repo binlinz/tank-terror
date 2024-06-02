@@ -15,7 +15,7 @@ public class Bullet {
   public Bullet(float x, float y, Tank parent) {
       parentTank = parent;
       rotation = (float)parentTank.rotation;
-      position = new PVector(x + 10 * cos((float) parentTank.rotation), y + 10 * sin((float) parentTank.rotation));
+      position = new PVector(x + 30 * cos((float) parentTank.rotation), y + 30 * sin((float) parentTank.rotation));
       velocity = new PVector(3 * cos((float) parentTank.rotation), 3 * sin((float) parentTank.rotation)); 
       timeCreated = millis();
       active = true;
@@ -37,9 +37,6 @@ public class Bullet {
   }
 
   public boolean destroyed(Tank tank) {
-    if(tank == parentTank) { 
-      return false;
-    }
     float distance = dist(position.x, position.y, tank.x, tank.y);
     return distance < 30; 
 }

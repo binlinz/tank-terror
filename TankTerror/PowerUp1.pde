@@ -1,5 +1,9 @@
-public class PowerUp1 extends PowerUp { 
-  public PowerUp1() { 
+public class Laser extends PowerUp { 
+  color col;
+  
+  public Laser() { 
     super();
+    col = color(255, 0, 0);
   }
+  
 } 
