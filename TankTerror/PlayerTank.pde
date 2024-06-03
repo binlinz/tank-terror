@@ -1,30 +1,39 @@
 public class PlayerTank extends Tank { 
-  private ArrayList<PowerUp> playerPower;
+  public ArrayList<PowerUp> playerPower;
   private int player;
   private int lastTime;
   private boolean firstTime = true;
+  public int timeBetweenBullets;
+  public int timeStartRapid;
+  private boolean rapid;
   
   public PlayerTank(int num) { 
     super((int)(Math.random() * 8) * 125 + 72, (int)(Math.random() * 8) * 125 + 72, num);
     player = num;
     playerPower = new ArrayList<PowerUp>();
+    timeBetweenBullets = 8500;
+    rapid = false;
   }
   
   public void attack() { 
     int currentTime = millis();
-    if(currentTime - lastTime >= 8500 || firstTime) {
+    
+    if (rapid && currentTime - timeStartRapid >= 5000) {
+      timeBetweenBullets = 8500;
+      rapid = false;
+    }
+    
+    if(currentTime - lastTime >= timeBetweenBullets || firstTime) {
       if(player == 1) { 
         if (keys['q'] || keys['Q']) { 
-          Bullet bullet = new Bullet(x, y, this); 
-          round.bullets.add(bullet);
+          shoot();
           lastTime = currentTime;
           firstTime = false;
         }
       } 
       if(player == 2) { 
         if (keys['/']) { 
-          Bullet bullet = new Bullet(x, y, this); 
-          round.bullets.add(bullet);
+          shoot();
           lastTime = currentTime;
           firstTime = false;
         }
@@ -32,6 +41,34 @@ public class PlayerTank extends Tank {
     }
   }
   
+  
+  public void shoot() {
+    if (playerPower.size() > 0 && !rapid) {
+      PowerUp p = playerPower.get(0);
+      if (p.getType().equals("Laser") && !rapid) {
+        Bullet bullet = new Laser(x, y, this); 
+        round.bullets.add(bullet);
+        playerPower.remove(0);
+      }
+      else if (p.getType().equals("Phase") && !rapid) {
+        Bullet bullet = new Phase(x, y, this); 
+        round.bullets.add(bullet);
+        playerPower.remove(0);
+      }
+      else if (p.getType().equals("Rapid") && !rapid) {
+        timeStartRapid = millis();
+        timeBetweenBullets = 500;
+        Bullet bullet = new Bullet(x, y, this); 
+        round.bullets.add(bullet);
+        rapid = true;
+        playerPower.remove(0);
+      }
+    }
+    else {
+      Bullet bullet = new Bullet(x, y, this); 
+      round.bullets.add(bullet);
+    }
+  }
   public void move() { 
     if (player == 1) {
         if ((keys['w'] || keys['W']) && canMoveForward()) { 

@@ -7,12 +7,9 @@ public class PowerUp {
    public int currentTime;
    
    public PowerUp() { 
-      position = new PVector((int)(Math.random() * 1000), (int)(Math.random() * 1000));
-      color pixel = get((int)position.x, (int)position.y);
-      while (red(pixel) >= 200 && blue(pixel) >= 200 && green(pixel) >= 200){
-         position = new PVector((int)Math.random() * 1000, (int)Math.random() * 1000);
-      }
+      position = new PVector(((int)(Math.random() * 80) + 25) + ((int)(Math.random() * round.map.mazeCols) * 125), ((int)(Math.random() * 80) + 25) + ((int)(Math.random() * round.map.mazeCols) * 125));
       type = generatePowerUp();
+      //type = "Rapid";
       initialTime = millis();
    }
    
@@ -22,7 +19,7 @@ public class PowerUp {
         return "Laser";
       }
       if (rand == 2){
-        return "Ghost";
+        return "Phase";
       }
       else return "Rapid";
    }
@@ -31,12 +28,16 @@ public class PowerUp {
      return type;
    }
    
-   public void startSpawn(){
-     currentTime = millis();
-     timeElapsed = currentTime - initialTime;
-     if (currentTime >= 15000){
-       show = true;
+   public void display() {
+     fill(0);
+     rect(position.x - 12.5, position.y - 12.5 , 25, 25);
+     for (int i = 0; i < round.tanks.size(); i++) {
+       PlayerTank temp = (PlayerTank) round.tanks.get(i);
+       if (dist(position.x, position.y, temp.x, temp.y) < 35) {
+         temp.playerPower.add(this);
+         round.powerUps.remove(this);
+         break;
+       }
      }
-     show = false;
    }
 }
