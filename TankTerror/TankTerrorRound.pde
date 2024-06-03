@@ -31,7 +31,7 @@ public class TankTerrorRound {
   public void advanceRound() {
     int currentTime = millis();
     int timeElapsed = currentTime - timeCreated;
-    if (timeElapsed >= 1000) {
+    if (timeElapsed >= 8000) {
       powerUps.add(new PowerUp());
       timeCreated = millis();
     }
