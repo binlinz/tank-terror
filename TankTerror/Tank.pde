@@ -14,6 +14,7 @@ abstract class Tank{
   Detector BorderDL;
   public int unitX;
   public int unitY;
+  public boolean isPlayerTank;
   
   public Tank() {
     
@@ -26,9 +27,11 @@ abstract class Tank{
     rotation = Math.PI;
     if (num == 1) {
       col = color(90, 199, 80);
+      isPlayerTank = true;
     }
     if (num == 2) {
       col = color(199, 131, 80);
+      isPlayerTank = true;
     }
     if (num == 3) {
       col = color(240, 38, 38);

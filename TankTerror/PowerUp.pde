@@ -35,11 +35,13 @@ public class PowerUp {
 
      rect(position.x - 12.5, position.y - 12.5 , 25, 25);
      for (int i = 0; i < round.tanks.size(); i++) {
-       PlayerTank temp = (PlayerTank) round.tanks.get(i);
-       if (dist(position.x, position.y, temp.x, temp.y) < 35) {
-         temp.playerPower.add(this);
-         round.powerUps.remove(this);
-         break;
+       if (round.tanks.get(i).isPlayerTank) {
+         PlayerTank temp = (PlayerTank) round.tanks.get(i);
+         if (dist(position.x, position.y, temp.x, temp.y) < 35) {
+           temp.playerPower.add(this);
+           round.powerUps.remove(this);
+           break;
+         }
        }
      }
    }
