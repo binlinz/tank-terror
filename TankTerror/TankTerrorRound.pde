@@ -26,13 +26,6 @@ public class TankTerrorRound {
     if (multiplayer) {
       tanks.add(new PlayerTank(2));
     }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    timeCreated = millis() + 4000;
-
-=======
-=======
->>>>>>> main
     else{
       NPCs.add(new NPCTank(3));
       NPCs.add(new NPCTank(3));
@@ -42,12 +35,7 @@ public class TankTerrorRound {
       map = new Maze(8, 8, 125);
     }
     map.makeMaze();
-<<<<<<< HEAD
     timeCreated = millis() + 4000;
->>>>>>> Stashed changes
-=======
-    timeCreated = millis() - 3000;
->>>>>>> main
   }
   
   public void advanceRound() {
