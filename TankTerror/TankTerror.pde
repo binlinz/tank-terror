@@ -38,12 +38,12 @@ void mousePressed(){
     if (mouseX >= 300 && mouseX <= 700 && mouseY <= 700 && mouseY >= 600){
       multiPlayer = false;
       gameStarted = true;
-      background(80, 190, 250);
+      background(183,233,246);
     }
     if (mouseX >= 300 && mouseX <= 700 && mouseY <= 825 && mouseY >= 725){
       multiPlayer = true;
       gameStarted = true;
-      background(80, 190, 250);
+      background(183,233,246);
     }
     roundEnd = true;
   }
@@ -62,7 +62,7 @@ public void draw(){
     startRound();    
   }
   if (gameStarted) {
-  background(80, 190, 250);
+  background(183,233,246);
     round.advanceRound();
   }
   if (!gameStarted && roundEnd) {
