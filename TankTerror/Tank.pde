@@ -12,7 +12,8 @@ abstract class Tank{
   Detector BorderDR;
   Detector BorderUL;
   Detector BorderDL;
-
+  public int unitX;
+  public int unitY;
   
   public Tank() {
     
@@ -22,7 +23,7 @@ abstract class Tank{
     bulletTimer = 5;
     this.x = x;
     this.y = y;
-    rotation = 1;
+    rotation = Math.PI;
     if (num == 1) {
       col = color(90, 199, 80);
     }
@@ -32,16 +33,11 @@ abstract class Tank{
     if (num == 3) {
       col = color(240, 38, 38);
     }
-    if (num == 4) {
-      col = color(136, 38, 240);
-    }
-    if (num == 5) {
-      col = color(38, 85, 240);
-    }
   }
 
   public void destroy() {
     round.tanks.remove(this);
+    round.NPCs.remove(this);
   }
   
   public void display(){
