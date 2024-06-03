@@ -24,7 +24,7 @@ public class TankTerrorRound {
     if (multiplayer) {
       tanks.add(new PlayerTank(2));
     }
-    timeCreated = millis() - 3000;
+    timeCreated = millis() + 4000;
 
   }
   

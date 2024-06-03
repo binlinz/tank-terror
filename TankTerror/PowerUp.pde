@@ -29,7 +29,10 @@ public class PowerUp {
    }
    
    public void display() {
-     fill(0);
+     if (type.equals("Laser")) fill(255, 153, 0);
+     if (type.equals("Phase")) fill(204, 0, 204);
+     if (type.equals("Rapid")) fill(0, 51, 153);
+
      rect(position.x - 12.5, position.y - 12.5 , 25, 25);
      for (int i = 0; i < round.tanks.size(); i++) {
        PlayerTank temp = (PlayerTank) round.tanks.get(i);
