@@ -15,7 +15,7 @@ public class NPCTank extends Tank {
   } 
   
   public void nearestTank(){
-    for (int i = 0; i < 
+
   }
   
 } 
