@@ -18,33 +18,29 @@ void setup(){
   image(tank, 150, 75);
   //Select Mode button
   fill(0);
-  textSize(60);
-  text("Select Mode", 345, 530);
+  textSize(65);
+  text("Select Mode", 340, 550);
+  PImage mode = loadImage("mode.png");
+  image(mode, 250, 475);
   
   //Single Player Button
-  fill(100);
-  rect(275, 575, 450, 125);
-  fill(255);
-  textSize(55);
-  text("Single Player", 350, 655);
+  PImage one = loadImage("1player.png");
+  image(one, 300, 600);
   
   //Two Player Button
-  fill(100);
-  rect(275, 725, 450, 125); 
-  fill(255);
-  textSize(55);
-  text("Two Player", 375, 800);
+  PImage two = loadImage("2player.png");
+  image(two, 300, 725);
   }
   
 void mousePressed(){
   // Checks for multiplayer input and clears background to start round
   if (!gameStarted){
-    if (mouseX >= 275 && mouseX <= 725 && mouseY <= 700 && mouseY >= 575){
+    if (mouseX >= 300 && mouseX <= 700 && mouseY <= 700 && mouseY >= 600){
       multiPlayer = false;
       gameStarted = true;
       background(80, 190, 250);
     }
-    if (mouseX >= 275 && mouseX <= 725 && mouseY <= 850 && mouseY >= 725){
+    if (mouseX >= 300 && mouseX <= 700 && mouseY <= 825 && mouseY >= 725){
       multiPlayer = true;
       gameStarted = true;
       background(80, 190, 250);
