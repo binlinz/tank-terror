@@ -1,6 +1,7 @@
 public class TankTerrorRound {
   public ArrayList<Tank> tanks;
   public ArrayList<NPCTank> NPCs;
+  public ArrayList<PlayerTank> players;
   private Maze map;
   public ArrayList<Bullet> bullets;
   public ArrayList<PowerUp> powerUps; // turn into public
@@ -12,6 +13,7 @@ public class TankTerrorRound {
     this.multiplayer = multiplayer;
     tanks = new ArrayList<Tank>();
     NPCs = new ArrayList<NPCTank>();
+    players = new ArrayList<PlayerTank>();
     bullets = new ArrayList<Bullet>();
     powerUps = new ArrayList<PowerUp>();
   }
@@ -22,12 +24,16 @@ public class TankTerrorRound {
       map = new Maze(8, 8, 125);
     }
     map.makeMaze();
-    tanks.add(new PlayerTank(1));
+    PlayerTank player1 = new PlayerTank(1);
+    tanks.add(player1);
+    players.add(player1);
     if (multiplayer) {
-      tanks.add(new PlayerTank(2));
+      PlayerTank player2 = new PlayerTank(2);
+      tanks.add(player2);
+      players.add(player2);
     }
     for (int i = 0; i < numNPC; i++) {
-      NPCs.add(new NPCTank(3));
+      NPCs.add(new NPCTank(3, map));
     }
     map = new Maze(8, 8, 125);
     while (map.countWalls() < 90){
@@ -50,6 +56,12 @@ public class TankTerrorRound {
       }
     }
     
+    for (int i = 0; i < players.size(); i++){
+      PlayerTank tank = players.get(i);
+      tank.updateX();
+      tank.updateY();
+    }
+    
     for (int i = 0; i < tanks.size(); i++) {
       Tank tank = tanks.get(i);
       tank.display();
@@ -58,8 +70,12 @@ public class TankTerrorRound {
     }
     
     for (int i = 0; i < NPCs.size(); i++){
-      Tank npc = NPCs.get(i);
+      NPCTank npc = NPCs.get(i);
       npc.display();
+      npc.nearestTank(players.get(0));
+      if (multiplayer){
+        npc.nearestTank(players.get(1));
+      }
       npc.move();
       npc.attack();
     }

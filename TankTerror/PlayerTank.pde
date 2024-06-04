@@ -6,6 +6,8 @@ public class PlayerTank extends Tank {
   public int timeBetweenBullets;
   public int timeStartRapid;
   private boolean rapid;
+  public int unitX;
+  public int unitY;
   
   public PlayerTank(int num) { 
     super((int)(Math.random() * 8) * 125 + 72, (int)(Math.random() * 8) * 125 + 72, num);
@@ -112,6 +114,21 @@ public class PlayerTank extends Tank {
     }
   } 
   
+  public void updateX(){
+    unitX = (int) (x / 125) + 1;
+  }
+  
+  public void updateY(){
+    unitY = (int) (y / 125) + 1;
+  }
+  
+  public int getX(){
+    return unitX;
+  }
+  
+  public int getY(){
+    return unitY;
+  }
   public void getPowerUp() { 
   } 
 } 
