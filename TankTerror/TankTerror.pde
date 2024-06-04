@@ -7,6 +7,7 @@ TankTerrorRound round;
 boolean roundStarted;
 boolean[] keys = new boolean[128]; 
 int numNPC;
+boolean NPCSelection;
 
 void setup(){
   gameStarted = false;
@@ -35,33 +36,41 @@ void mousePressed(){
   // Checks for multiplayer input and clears background to start round
   if (!gameStarted){
     if (mouseX >= 300 && mouseX <= 700 && mouseY <= 700 && mouseY >= 600){
+      gameStarted = true;
       multiPlayer = false;
       npcSelection();
+      NPCSelection = false;
+    }
+    if (mouseX >= 300 && mouseX <= 725 && mouseY <= 825 && mouseY >= 725){
+      gameStarted = true;
+      multiPlayer = true;
+      npcSelection();
+      NPCSelection = false;
+    }
+    roundEnd = true;
+  }
+  else if (!NPCSelection) {
       if (mouseX >= 275 && mouseX <= 375 && mouseY <= 745 && mouseY >= 625){
         numNPC = 1;
         print(1);
         gameStarted = true;
         background(183,233,246);
+        NPCSelection = true;
       }
       if (mouseX >= 450 && mouseX <= 550 && mouseY <= 745 && mouseY >= 625){
         numNPC = 2;
         print(2);
         gameStarted = true;
         background(183,233,246);
+        NPCSelection = true;
       }
       if (mouseX >= 625 && mouseX <= 725 && mouseY <= 745 && mouseY >= 625){
         numNPC = 3;
         print(3);
         gameStarted = true;
         background(183,233,246);
+        NPCSelection = true;
       }
-    }
-    if (mouseX >= 300 && mouseX <= 725 && mouseY <= 825 && mouseY >= 725){
-      multiPlayer = true;
-      gameStarted = true;
-      background(183,233,246);
-    }
-    roundEnd = true;
   }
 }
 
@@ -88,10 +97,10 @@ void keyReleased() {
 }
 
 public void draw(){
-  if (gameStarted && !roundStarted) {
+  if (gameStarted && !roundStarted && NPCSelection) {
     startRound();    
   }
-  if (gameStarted) {
+  if (gameStarted && NPCSelection) {
   background(183,233,246);
     round.advanceRound();
   }
