@@ -15,12 +15,14 @@ abstract class Tank{
   public int unitX;
   public int unitY;
   public boolean isPlayerTank;
+  int num;
   
   public Tank() {
     
   }
   
   public Tank(int x, int y, int num){
+    this.num = num;
     bulletTimer = 5;
     this.x = x;
     this.y = y;

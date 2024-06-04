@@ -113,6 +113,19 @@ public class TankTerrorRound {
         return 1;
       }
     }
+    else {
+      if (tanks.size() == 0) {
+        return 0;
+      }
+      if (tanks.size() == 1) {
+        if (tanks.get(0).num == 1) {
+          return 1;
+        }
+        else if (tanks.get(0).num == 2) {
+          return 2;
+        }
+      }
+    }
     return -2;
   }
 

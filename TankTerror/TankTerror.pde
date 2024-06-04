@@ -116,6 +116,26 @@ public void draw(){
         displayScore();
       }
     }
+    else {
+      if (round.win() == 0) {
+        gameStarted = false;
+        roundEnd = true;
+      }
+      else if (round.win() == 1) {
+        player1Score++;
+        gameStarted = true; 
+        roundStarted = false;
+        roundEnd = true;
+        displayScore();
+      }
+      else if (round.win() == 2) {
+        player2Score++;
+        gameStarted = true; 
+        roundStarted = false;
+        roundEnd = true;
+        displayScore();
+      }
+    }
   }
   if (!gameStarted && roundEnd) {
     displayScore();
