@@ -26,8 +26,7 @@ public class TankTerrorRound {
     if (multiplayer) {
       tanks.add(new PlayerTank(2));
     }
-    else{
-      NPCs.add(new NPCTank(3));
+    for (int i = 0; i < numNPC; i++) {
       NPCs.add(new NPCTank(3));
     }
     map = new Maze(8, 8, 125);
@@ -71,18 +70,22 @@ public class TankTerrorRound {
         bullet.display();
         bullet.advance();
         bullet.bounce();
-      for (int j = tanks.size() - 1; j >= 0; j--) {
-        Tank tank = tanks.get(j);
-        Tank npc = NPCs.get(j);
-        if (bullet.destroyed(tank)) {
-          tanks.remove(j);
-          bullets.remove(i);
-          break; 
-        }
+        
+        for (int j = NPCs.size() - 1; j >= 0; j--) {
+          Tank npc = NPCs.get(j);
         if (bullet.destroyed(npc)){
           NPCs.remove(j);
           bullets.remove(i);
           break;
+        }
+
+        }
+      for (int j = tanks.size() - 1; j >= 0; j--) {
+        Tank tank = tanks.get(j);
+        if (bullet.destroyed(tank)) {
+          tanks.remove(j);
+          bullets.remove(i);
+          break; 
         }
       }
     } else {
