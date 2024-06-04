@@ -5,7 +5,7 @@ boolean gameStarted;
 boolean roundEnd;
 TankTerrorRound round;
 boolean roundStarted;
-boolean[] keys = new boolean[128]; 
+boolean[] keys = new boolean[200]; 
 int numNPC;
 boolean NPCSelection;
 
@@ -101,8 +101,21 @@ public void draw(){
     startRound();    
   }
   if (gameStarted && NPCSelection) {
-  background(183,233,246);
+    background(183,233,246);
     round.advanceRound();
+    if (!multiPlayer) {
+      if (round.win() == 0) {
+        gameStarted = false;
+        roundEnd = true;
+      }
+      else if (round.win() == 1) {
+        player1Score++;
+        gameStarted = true; 
+        roundStarted = false;
+        roundEnd = true;
+        displayScore();
+      }
+    }
   }
   if (!gameStarted && roundEnd) {
     displayScore();
@@ -121,6 +134,7 @@ public void startRound(){
 public void displayScore(){
   // REMEMBER TO ADD TEXT OR DOCUMENTATION SO PEOPLE KNOW WHO IS P1 AND P2 
   // THIS IS A PRIMITIVE PLACEHOLDER FOR AN ACTUALY SCORE BOARD
+  delay(1000);
   if (multiPlayer){
     System.out.println("Player One Score: " + player1Score + " --- " + "Player Two Score: " + player2Score); 
   }

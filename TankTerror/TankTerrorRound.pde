@@ -105,7 +105,15 @@ public class TankTerrorRound {
   }
   
   public int win() {
-    return 0;
+    if (!multiplayer) {
+      if (tanks.size() == 0) {
+        return 0;
+      }
+      if (NPCs.size() == 0) {
+        return 1;
+      }
+    }
+    return -2;
   }
 
 }
