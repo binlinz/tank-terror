@@ -6,6 +6,7 @@ boolean roundEnd;
 TankTerrorRound round;
 boolean roundStarted;
 boolean[] keys = new boolean[128]; 
+int numNPC;
 
 void setup(){
   gameStarted = false;
@@ -16,10 +17,8 @@ void setup(){
   
   PImage tank = loadImage("tank.png");
   image(tank, 150, 75);
+  
   //Select Mode button
-  fill(0);
-  textSize(65);
-  text("Select Mode", 340, 550);
   PImage mode = loadImage("mode.png");
   image(mode, 250, 475);
   
@@ -30,23 +29,54 @@ void setup(){
   //Two Player Button
   PImage two = loadImage("2player.png");
   image(two, 300, 725);
-  }
-  
+}
+
 void mousePressed(){
   // Checks for multiplayer input and clears background to start round
   if (!gameStarted){
     if (mouseX >= 300 && mouseX <= 700 && mouseY <= 700 && mouseY >= 600){
       multiPlayer = false;
-      gameStarted = true;
-      background(183,233,246);
+      npcSelection();
+      if (mouseX >= 275 && mouseX <= 375 && mouseY <= 745 && mouseY >= 625){
+        numNPC = 1;
+        print(1);
+        gameStarted = true;
+        background(183,233,246);
+      }
+      if (mouseX >= 450 && mouseX <= 550 && mouseY <= 745 && mouseY >= 625){
+        numNPC = 2;
+        print(2);
+        gameStarted = true;
+        background(183,233,246);
+      }
+      if (mouseX >= 625 && mouseX <= 725 && mouseY <= 745 && mouseY >= 625){
+        numNPC = 3;
+        print(3);
+        gameStarted = true;
+        background(183,233,246);
+      }
     }
-    if (mouseX >= 300 && mouseX <= 700 && mouseY <= 825 && mouseY >= 725){
+    if (mouseX >= 300 && mouseX <= 725 && mouseY <= 825 && mouseY >= 725){
       multiPlayer = true;
       gameStarted = true;
       background(183,233,246);
     }
     roundEnd = true;
   }
+}
+
+void npcSelection() { 
+  background(255);
+  PImage tank = loadImage("tank.png");
+  image(tank, 150, 75);
+  PImage npc = loadImage("npc.png");
+  image(npc, 375, 500);
+  PImage npc1 = loadImage("1.png");
+  image(npc1, 275, 625);
+  PImage npc2 = loadImage("2.png");
+  image(npc2, 450, 625);
+  PImage npc3 = loadImage("3.png");
+  image(npc3, 625, 628);
 }
   
 void keyPressed() {
