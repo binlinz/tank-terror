@@ -33,28 +33,27 @@ public class NPCTank extends Tank {
     }
   }
   
-  public void calcMove(int x, int y, ArrayList<Integer> move){
-    if (x == nearestX && y = nearestY){
+  public ArrayList<Integer> calcMove(int x, int y, ArrayList<Integer> move){
+    if (x == nearestX && y == nearestY){
       return move;
     }
-    MazeUnit start = map[x][y];
-    if (!start.getLeft() && i > 0 && !map[currX - 1][currY].getRight()) {
+    Maze maze = round.map;
+    MazeUnit start = round.map.map[x][y];
+    if (!start.getLeft() && x > 0 && !maze.map[x - 1][y].getRight()) {
       move.add(1);
-      calcMove(currX - 1, j, move);
+      calcMove(x - 1, y, move);
     }
-    if (!start.getRight() && i < mazeCols - 1 && !map[currX + 1][currY].getLeft()) { 
+    if (!start.getRight() && x < maze.mazeCols - 1 && !maze.map[x + 1][y].getLeft()) { 
       move.add(2);
-      calcMove(currX + 1, currY, move);
+      calcMove(x + 1, y, move);
     }
-    if (!start.getDown() && j < mazeRows - 1 && !map[i][j + 1].getUp()) { 
+    if (!start.getDown() && y < maze.mazeRows - 1 && !maze.map[x][y + 1].getUp()) { 
       move.add(3);
-      calcMove(currX, currY + 1, move);
+      calcMove(x, y + 1, move);
     }
-    if (!start.getUp() && j > 0 && !map[i][j - 1].getDown()) {
+    if (!start.getUp() && y > 0 && !maze.map[x][y - 1].getDown()) {
       move.add(4);
-      calcMove(currX, currY + 1, move);
+      calcMove(x, y + 1, move);
     }
-
-  }
   }
 }

@@ -2,7 +2,7 @@ public class TankTerrorRound {
   public ArrayList<Tank> tanks;
   public ArrayList<NPCTank> NPCs;
   public ArrayList<PlayerTank> players;
-  private Maze map;
+  public Maze map;
   public ArrayList<Bullet> bullets;
   public ArrayList<PowerUp> powerUps; // turn into public
   //private int powerUpTimer;
@@ -33,7 +33,7 @@ public class TankTerrorRound {
       players.add(player2);
     }
     for (int i = 0; i < numNPC; i++) {
-      NPCs.add(new NPCTank(3, map));
+      NPCs.add(new NPCTank(3));
     }
     map = new Maze(8, 8, 125);
     while (map.countWalls() < 90){

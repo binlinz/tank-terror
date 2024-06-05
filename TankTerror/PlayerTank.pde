@@ -74,8 +74,8 @@ public class PlayerTank extends Tank {
   public void move() { 
     if (player == 1) {
         if ((keys['w'] || keys['W']) && canMoveForward()) { 
-            x += cos((float) rotation);
-            y += sin((float) rotation); 
+            x += 2 * cos((float) rotation);
+            y += 2 * sin((float) rotation); 
         }
         if (keys['a'] || keys['A']) { 
             rotation -= 0.05;
@@ -84,8 +84,8 @@ public class PlayerTank extends Tank {
             }
         }
         if (keys['s'] || keys['S'] && canMoveBackward()) { 
-            x -= cos((float) rotation);
-            y -= sin((float) rotation); 
+            x -= 2 * cos((float) rotation);
+            y -= 2 * sin((float) rotation); 
         }
         if (keys['d'] || keys['D']) {
             rotation += 0.05;
@@ -94,8 +94,8 @@ public class PlayerTank extends Tank {
     }
     if (player == 2) {
         if (keys[UP] && canMoveForward()) { 
-            x += cos((float) rotation);
-            y += sin((float) rotation); 
+            x += 2 * cos((float) rotation);
+            y += 2 * sin((float) rotation); 
         }
         if (keys[LEFT]) { 
             rotation -= 0.05;
@@ -104,8 +104,8 @@ public class PlayerTank extends Tank {
             }
         }
         if (keys[DOWN] && canMoveBackward()) { 
-            x -= cos((float) rotation);
-            y -= sin((float) rotation); 
+            x -= 2 * cos((float) rotation);
+            y -= 2 * sin((float) rotation); 
         }
         if (keys[RIGHT]) {
             rotation += 0.05;
