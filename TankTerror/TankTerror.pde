@@ -138,7 +138,7 @@ public void draw(){
     }
   }
   if (!gameStarted && roundEnd) {
-    displayScore();
+    //displayScore();
     displayWin();
   }
 }
@@ -164,5 +164,7 @@ public void displayScore(){
 }
 
 public void displayWin(){
-  
+    background(255);
+    text(player1Score, 500, 500);
+    text(player2Score, 700, 500);
 }
