@@ -21,7 +21,7 @@ abstract class Tank{
     
   }
   
-  public Tank(int x, int y, int num){
+  public Tank(float x, float y, int num){
     this.num = num;
     bulletTimer = 5;
     this.x = x;

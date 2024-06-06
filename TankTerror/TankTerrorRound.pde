@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class TankTerrorRound {
   public ArrayList<Tank> tanks;
   public ArrayList<NPCTank> NPCs;
@@ -50,17 +52,23 @@ public class TankTerrorRound {
       }
     }
     
+    int[][] nextNPCMove = new int[map.mazeRows][map.mazeCols];
     for (int i = 0; i < tanks.size(); i++) {
       Tank tank = tanks.get(i);
       tank.display();
       tank.move();
       tank.attack();
-    }
+      ((PlayerTank)tank).calcNPCArr(nextNPCMove, (int)tank.x / 125, (int)tank.y / 125, 100);
+      for (int k = 0; k < 8; k++) {
+        System.out.println(Arrays.toString(nextNPCMove[k]));
+      }
+      System.out.println("-------");
+  }
     
     for (int i = 0; i < NPCs.size(); i++){
-      Tank npc = NPCs.get(i);
+      NPCTank npc = NPCs.get(i);
       npc.display();
-      npc.move();
+      npc.move(nextNPCMove);
       npc.attack();
     }
     

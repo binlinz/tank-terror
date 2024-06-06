@@ -112,6 +112,26 @@ public class PlayerTank extends Tank {
     }
   } 
   
-  public void getPowerUp() { 
+  public void calcNPCArr(int[][] arr, int i, int j, int curr) { 
+    if (curr <= arr[i][j]) {
+      System.out.println(curr);
+      return;
+    }
+    arr[i][j] = curr;
+    curr--;
+    MazeUnit start = round.map.map[i][j];
+    MazeUnit[][] map = round.map.map;
+    if (i > 0 && !start.getLeft() && !map[i - 1][j].getRight()) {
+      calcNPCArr(arr, i - 1, j, curr);
+    }
+    if (i < round.map.mazeCols - 1 && !start.getRight() && !map[i + 1][j].getLeft()) {
+      calcNPCArr(arr, i + 1, j, curr);
+    }
+    if (j > 0 && !start.getUp() && !map[i][j - 1].getDown()) {
+      calcNPCArr(arr, i, j - 1, curr);
+    }
+    if (j < round.map.mazeRows - 1 && !start.getDown() && !map[i][j + 1].getUp()) {
+      calcNPCArr(arr, i, j + 1, curr);
+    }
   } 
 } 
