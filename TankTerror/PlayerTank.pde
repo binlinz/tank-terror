@@ -114,7 +114,6 @@ public class PlayerTank extends Tank {
     }
   } 
   
-<<<<<<< HEAD
   public void updateX(){
     unitX = (int) (x / 125) + 1;
   }
@@ -131,7 +130,7 @@ public class PlayerTank extends Tank {
     return unitY;
   }
   public void getPowerUp() { 
-=======
+  }
   public void calcNPCArr(int[][] arr, int i, int j, int curr) { 
     if (curr <= arr[i][j]) {
       System.out.println(curr);
@@ -153,6 +152,5 @@ public class PlayerTank extends Tank {
     if (j < round.map.mazeRows - 1 && !start.getDown() && !map[i][j + 1].getUp()) {
       calcNPCArr(arr, i, j + 1, curr);
     }
->>>>>>> 03d041ead31073995d9ff9c8b87e1ebd5ca4d332
   } 
 } 

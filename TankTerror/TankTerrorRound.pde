@@ -58,16 +58,13 @@ public class TankTerrorRound {
       }
     }
     
-<<<<<<< HEAD
     for (int i = 0; i < players.size(); i++){
       PlayerTank tank = players.get(i);
       tank.updateX();
       tank.updateY();
     }
     
-=======
     int[][] nextNPCMove = new int[map.mazeRows][map.mazeCols];
->>>>>>> 03d041ead31073995d9ff9c8b87e1ebd5ca4d332
     for (int i = 0; i < tanks.size(); i++) {
       Tank tank = tanks.get(i);
       tank.display();
@@ -83,15 +80,6 @@ public class TankTerrorRound {
     for (int i = 0; i < NPCs.size(); i++){
       NPCTank npc = NPCs.get(i);
       npc.display();
-<<<<<<< HEAD
-      npc.nearestTank(players.get(0));
-      if (multiplayer){
-        npc.nearestTank(players.get(1));
-      }
-      npc.move();
-=======
-      npc.move(nextNPCMove);
->>>>>>> 03d041ead31073995d9ff9c8b87e1ebd5ca4d332
       npc.attack();
     }
     
