@@ -164,5 +164,42 @@ public void displayScore(){
 }
 
 public void displayWin(){
-  
+  background(255);
+  PImage score = loadImage("score.png");
+  int r1, g1, b1, r2, g2, b2;
+  if((player1Score == player2Score) || !multiPlayer) { 
+    r1 = 0; g1 = 0; b1 = 0; r2 = 0; g2 = 0; b2 = 0;
+  } else if(player1Score > player2Score) { 
+    r1 = 35; 
+    g1 = 101; 
+    b1 = 51;
+    r2 = 217; 
+    g2 = 33;
+    b2 = 33;
+  } else { 
+    r1 = 217; 
+    g1 = 33; 
+    b1 = 33;
+    r2 = 35; 
+    g2 = 101;
+    b2 = 51;
+  }
+  image(score, 210, 250);
+  textSize(130);
+  fill(r1, g1, b1);
+  if(!multiPlayer) { 
+    text(player1Score, 450, 550);
+    fill(r1, g1, b1);
+  } else {
+    text(player1Score, 300, 550);
+    fill(r1, g1, b1);
+    textSize(40);
+    text("Player 1", 275, 650);
+    textSize(130);
+    fill(r2, g2, b2);
+    text(player2Score, 650, 550); 
+    fill(r2, g1, b2);
+    textSize(40);
+    text("Player 2", 625, 650);
+  }
 }
