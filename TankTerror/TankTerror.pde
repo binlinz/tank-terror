@@ -138,7 +138,7 @@ public void draw(){
     }
   }
   if (!gameStarted && roundEnd) {
-    displayScore();
+    //displayScore();
     displayWin();
   }
 }
