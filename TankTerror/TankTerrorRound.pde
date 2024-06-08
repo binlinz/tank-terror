@@ -69,6 +69,7 @@ public class TankTerrorRound {
     }
     
     for (int i = 0; i < bullets.size(); i++) {
+      boolean removed = false;
       Bullet bullet = bullets.get(i);
       if (bullet.isActive()) {
         bullet.display();
@@ -79,7 +80,10 @@ public class TankTerrorRound {
           Tank npc = NPCs.get(j);
         if (bullet.destroyed(npc)){
           NPCs.remove(j);
-          bullets.remove(i);
+          if (!removed) {
+            bullets.remove(i);
+            removed = true;
+          }
           break;
         }
 
@@ -88,7 +92,10 @@ public class TankTerrorRound {
         Tank tank = tanks.get(j);
         if (bullet.destroyed(tank)) {
           tanks.remove(j);
-          bullets.remove(i);
+          if (!removed) {
+            bullets.remove(i);
+            removed = true;
+          }
           break; 
         }
       }
