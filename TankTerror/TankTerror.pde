@@ -118,8 +118,10 @@ public void draw(){
     }
     else {
       if (round.win() == 0) {
-        gameStarted = false;
+        gameStarted = true; 
+        roundStarted = false;
         roundEnd = true;
+        displayScore();
       }
       else if (round.win() == 1) {
         player1Score++;
@@ -134,6 +136,10 @@ public void draw(){
         roundStarted = false;
         roundEnd = true;
         displayScore();
+      }
+      if (player1Score >= 5 || player2Score >= 5) {
+        gameStarted = false;
+        roundEnd = true;
       }
     }
   }

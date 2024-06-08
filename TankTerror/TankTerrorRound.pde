@@ -121,7 +121,7 @@ public class TankTerrorRound {
       if (tanks.size() == 0) {
         return 0;
       }
-      if (tanks.size() == 1) {
+      if (tanks.size() == 1 && NPCs.size() == 0) {
         if (tanks.get(0).num == 1) {
           return 1;
         }
