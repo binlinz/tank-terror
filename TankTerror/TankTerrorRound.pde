@@ -59,10 +59,6 @@ public class TankTerrorRound {
       tank.move();
       tank.attack();
       ((PlayerTank)tank).calcNPCArr(nextNPCMove, (int)tank.x / 125, (int)tank.y / 125, 100);
-      for (int k = 0; k < 8; k++) {
-        System.out.println(Arrays.toString(nextNPCMove[k]));
-      }
-      System.out.println("-------");
   }
     
     for (int i = 0; i < NPCs.size(); i++){
