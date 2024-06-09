@@ -21,7 +21,7 @@ public class NPCTank extends Tank {
     int currentTime = millis();
 
     if(currentTime - lastTime >= timeBetweenBullets || firstTime) {
-      rotation = (float) (Math.random() * TWO_PI);
+      rotation += (float) (Math.random() * TWO_PI);
       Bullet bullet = new Bullet(x, y, this); 
       round.bullets.add(bullet);
       lastTime = currentTime;
