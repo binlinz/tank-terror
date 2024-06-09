@@ -3,8 +3,7 @@ import java.util.Arrays;
 public class TankTerrorRound {
   public ArrayList<Tank> tanks;
   public ArrayList<NPCTank> NPCs;
-  public ArrayList<PlayerTank> players;
-  public Maze map;
+  private Maze map;
   public ArrayList<Bullet> bullets;
   public ArrayList<PowerUp> powerUps; // turn into public
   //private int powerUpTimer;
@@ -15,7 +14,6 @@ public class TankTerrorRound {
     this.multiplayer = multiplayer;
     tanks = new ArrayList<Tank>();
     NPCs = new ArrayList<NPCTank>();
-    players = new ArrayList<PlayerTank>();
     bullets = new ArrayList<Bullet>();
     powerUps = new ArrayList<PowerUp>();
   }
@@ -26,13 +24,9 @@ public class TankTerrorRound {
       map = new Maze(8, 8, 125);
     }
     map.makeMaze();
-    PlayerTank player1 = new PlayerTank(1);
-    tanks.add(player1);
-    players.add(player1);
+    tanks.add(new PlayerTank(1));
     if (multiplayer) {
-      PlayerTank player2 = new PlayerTank(2);
-      tanks.add(player2);
-      players.add(player2);
+      tanks.add(new PlayerTank(2));
     }
     for (int i = 0; i < numNPC; i++) {
       NPCs.add(new NPCTank(3));
@@ -58,12 +52,6 @@ public class TankTerrorRound {
       }
     }
     
-    for (int i = 0; i < players.size(); i++){
-      PlayerTank tank = players.get(i);
-      tank.updateX();
-      tank.updateY();
-    }
-    
     int[][] nextNPCMove = new int[map.mazeRows][map.mazeCols];
     for (int i = 0; i < tanks.size(); i++) {
       Tank tank = tanks.get(i);
@@ -71,19 +59,16 @@ public class TankTerrorRound {
       tank.move();
       tank.attack();
       ((PlayerTank)tank).calcNPCArr(nextNPCMove, (int)tank.x / 125, (int)tank.y / 125, 100);
-      for (int k = 0; k < 8; k++) {
-        System.out.println(Arrays.toString(nextNPCMove[k]));
-      }
-      System.out.println("-------");
   }
     
     for (int i = 0; i < NPCs.size(); i++){
       NPCTank npc = NPCs.get(i);
       npc.display();
-      npc.attack();
+      npc.move(nextNPCMove);
     }
     
     for (int i = 0; i < bullets.size(); i++) {
+      boolean removed = false;
       Bullet bullet = bullets.get(i);
       if (bullet.isActive()) {
         bullet.display();
@@ -94,7 +79,10 @@ public class TankTerrorRound {
           Tank npc = NPCs.get(j);
         if (bullet.destroyed(npc)){
           NPCs.remove(j);
-          bullets.remove(i);
+          if (!removed) {
+            bullets.remove(i);
+            removed = true;
+          }
           break;
         }
 
@@ -103,7 +91,10 @@ public class TankTerrorRound {
         Tank tank = tanks.get(j);
         if (bullet.destroyed(tank)) {
           tanks.remove(j);
-          bullets.remove(i);
+          if (!removed) {
+            bullets.remove(i);
+            removed = true;
+          }
           break; 
         }
       }
@@ -136,7 +127,7 @@ public class TankTerrorRound {
       if (tanks.size() == 0) {
         return 0;
       }
-      if (tanks.size() == 1) {
+      if (tanks.size() == 1 && NPCs.size() == 0) {
         if (tanks.get(0).num == 1) {
           return 1;
         }
