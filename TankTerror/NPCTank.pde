@@ -21,13 +21,12 @@ public class NPCTank extends Tank {
     int currentTime = millis();
 
     if(currentTime - lastTime >= timeBetweenBullets || firstTime) {
-      double oldRotation = rotation;
       rotation += (float) (Math.random() * TWO_PI);
       Bullet bullet = new Bullet(x, y, this); 
       round.bullets.add(bullet);
       lastTime = currentTime;
       firstTime = false;
-      rotation = oldRotation;
+      rotation = (int) (Math.random() * 4) * (PI / 2);
     }
   }
   
@@ -45,10 +44,6 @@ public class NPCTank extends Tank {
     nearestY = (int) y / 125;
     MazeUnit start = round.map.map[nearestX][nearestY];
     MazeUnit[][] map = round.map.map;
-    
-    if (moveArr[nearestY][nearestX] >= 97) {
-       attack();
-    }
     
     if (((nearestX > 0 && !start.getLeft() && !map[nearestX - 1][nearestY].getRight() && moveArr[nearestY][nearestX - 1] == moveArr[nearestY][nearestX] + 1) || (distanceXLTraveled % dist != 0)) && rotation >= Math.PI - tolerance && rotation <= Math.PI + tolerance) {
         x -= 1.25;
@@ -71,7 +66,9 @@ public class NPCTank extends Tank {
       rotation += 0.18;
       move();
     }
-
+    if (moveArr[nearestY][nearestX] >= 97) {
+      attack();
+    }
     
   } 
 
