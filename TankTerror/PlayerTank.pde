@@ -74,8 +74,13 @@ public class PlayerTank extends Tank {
   public void move() { 
     if (player == 1) {
         if ((keys['w'] || keys['W']) && canMoveForward()) { 
+<<<<<<< HEAD
             x += 2 * cos((float) rotation);
             y += 2 * sin((float) rotation); 
+=======
+            x += 2.2 * cos((float) rotation);
+            y += 2.2 * sin((float) rotation); 
+>>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys['a'] || keys['A']) { 
             rotation -= 0.05;
@@ -84,8 +89,13 @@ public class PlayerTank extends Tank {
             }
         }
         if (keys['s'] || keys['S'] && canMoveBackward()) { 
+<<<<<<< HEAD
             x -= 2 * cos((float) rotation);
             y -= 2 * sin((float) rotation); 
+=======
+            x -= 2.2 * cos((float) rotation);
+            y -= 2.2 * sin((float) rotation); 
+>>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys['d'] || keys['D']) {
             rotation += 0.05;
@@ -94,8 +104,13 @@ public class PlayerTank extends Tank {
     }
     if (player == 2) {
         if (keys[UP] && canMoveForward()) { 
+<<<<<<< HEAD
             x += 2 * cos((float) rotation);
             y += 2 * sin((float) rotation); 
+=======
+            x += 2.2 * cos((float) rotation);
+            y += 2.2 * sin((float) rotation); 
+>>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys[LEFT]) { 
             rotation -= 0.05;
@@ -104,8 +119,13 @@ public class PlayerTank extends Tank {
             }
         }
         if (keys[DOWN] && canMoveBackward()) { 
+<<<<<<< HEAD
             x -= 2 * cos((float) rotation);
             y -= 2 * sin((float) rotation); 
+=======
+            x -= 2.2 * cos((float) rotation);
+            y -= 2.2 * sin((float) rotation); 
+>>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys[RIGHT]) {
             rotation += 0.05;
@@ -114,6 +134,7 @@ public class PlayerTank extends Tank {
     }
   } 
   
+<<<<<<< HEAD
   public void updateX(){
     unitX = (int) (x / 125) + 1;
   }
@@ -134,23 +155,27 @@ public class PlayerTank extends Tank {
   public void calcNPCArr(int[][] arr, int i, int j, int curr) { 
     if (curr <= arr[i][j]) {
       System.out.println(curr);
+=======
+  public void calcNPCArr(int[][] arr, int x, int y, int curr) { 
+    if (curr <= arr[y][x]) {
+>>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
       return;
     }
-    arr[i][j] = curr;
-    curr--;
-    MazeUnit start = round.map.map[i][j];
+    arr[y][x] = curr;
+    
+    MazeUnit start = round.map.map[x][y];
     MazeUnit[][] map = round.map.map;
-    if (i > 0 && !start.getLeft() && !map[i - 1][j].getRight()) {
-      calcNPCArr(arr, i - 1, j, curr);
+    if (x > 0 && !start.getLeft() && !map[x - 1][y].getRight()) {
+      calcNPCArr(arr, x - 1, y, curr - 1);
     }
-    if (i < round.map.mazeCols - 1 && !start.getRight() && !map[i + 1][j].getLeft()) {
-      calcNPCArr(arr, i + 1, j, curr);
+    if (x < round.map.mazeCols - 1 && !start.getRight() && !map[x + 1][y].getLeft()) {
+      calcNPCArr(arr, x + 1, y, curr - 1);
     }
-    if (j > 0 && !start.getUp() && !map[i][j - 1].getDown()) {
-      calcNPCArr(arr, i, j - 1, curr);
+    if (y > 0 && !start.getUp() && !map[x][y - 1].getDown()) {
+      calcNPCArr(arr, x, y - 1, curr - 1);
     }
-    if (j < round.map.mazeRows - 1 && !start.getDown() && !map[i][j + 1].getUp()) {
-      calcNPCArr(arr, i, j + 1, curr);
+    if (y < round.map.mazeRows - 1 && !start.getDown() && !map[x][y + 1].getUp()) {
+      calcNPCArr(arr, x, y + 1, curr - 1);
     }
   } 
 } 
