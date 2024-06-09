@@ -74,13 +74,8 @@ public class PlayerTank extends Tank {
   public void move() { 
     if (player == 1) {
         if ((keys['w'] || keys['W']) && canMoveForward()) { 
-<<<<<<< HEAD
-            x += 2 * cos((float) rotation);
-            y += 2 * sin((float) rotation); 
-=======
             x += 2.2 * cos((float) rotation);
             y += 2.2 * sin((float) rotation); 
->>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys['a'] || keys['A']) { 
             rotation -= 0.05;
@@ -89,13 +84,8 @@ public class PlayerTank extends Tank {
             }
         }
         if (keys['s'] || keys['S'] && canMoveBackward()) { 
-<<<<<<< HEAD
-            x -= 2 * cos((float) rotation);
-            y -= 2 * sin((float) rotation); 
-=======
             x -= 2.2 * cos((float) rotation);
             y -= 2.2 * sin((float) rotation); 
->>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys['d'] || keys['D']) {
             rotation += 0.05;
@@ -104,13 +94,8 @@ public class PlayerTank extends Tank {
     }
     if (player == 2) {
         if (keys[UP] && canMoveForward()) { 
-<<<<<<< HEAD
-            x += 2 * cos((float) rotation);
-            y += 2 * sin((float) rotation); 
-=======
             x += 2.2 * cos((float) rotation);
             y += 2.2 * sin((float) rotation); 
->>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys[LEFT]) { 
             rotation -= 0.05;
@@ -119,13 +104,8 @@ public class PlayerTank extends Tank {
             }
         }
         if (keys[DOWN] && canMoveBackward()) { 
-<<<<<<< HEAD
-            x -= 2 * cos((float) rotation);
-            y -= 2 * sin((float) rotation); 
-=======
             x -= 2.2 * cos((float) rotation);
             y -= 2.2 * sin((float) rotation); 
->>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
         }
         if (keys[RIGHT]) {
             rotation += 0.05;
@@ -134,31 +114,9 @@ public class PlayerTank extends Tank {
     }
   } 
   
-<<<<<<< HEAD
-  public void updateX(){
-    unitX = (int) (x / 125) + 1;
-  }
-  
-  public void updateY(){
-    unitY = (int) (y / 125) + 1;
-  }
-  
-  public int getX(){
-    return unitX;
-  }
-  
-  public int getY(){
-    return unitY;
-  }
-  public void getPowerUp() { 
-  }
-  public void calcNPCArr(int[][] arr, int i, int j, int curr) { 
-    if (curr <= arr[i][j]) {
-      System.out.println(curr);
-=======
+
   public void calcNPCArr(int[][] arr, int x, int y, int curr) { 
     if (curr <= arr[y][x]) {
->>>>>>> af85f84838634b759d53d91a0591e95ddc98a77f
       return;
     }
     arr[y][x] = curr;
