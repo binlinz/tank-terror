@@ -10,6 +10,8 @@ public class NPCTank extends Tank {
   public int timeBetweenBullets;
   private int lastTime;
   public boolean firstTime;
+  private double originalRotation;
+  private boolean shot;
 
   public NPCTank(int num){
     super((int)(Math.random() * 8) * 125 + 72.5, (int)(Math.random() * 8) * 125 + 72.5, num);
@@ -21,12 +23,13 @@ public class NPCTank extends Tank {
     int currentTime = millis();
 
     if(currentTime - lastTime >= timeBetweenBullets || firstTime) {
-      rotation += (float) (Math.random() * TWO_PI);
+      originalRotation = rotation;
+      rotation = (float) (Math.random() * TWO_PI);
       Bullet bullet = new Bullet(x, y, this); 
       round.bullets.add(bullet);
       lastTime = currentTime;
       firstTime = false;
-      rotation = (int) (Math.random() * 4) * (PI / 2);
+      shot = true;
     }
   }
   
@@ -45,7 +48,17 @@ public class NPCTank extends Tank {
     MazeUnit start = round.map.map[nearestX][nearestY];
     MazeUnit[][] map = round.map.map;
     
-    if (((nearestX > 0 && !start.getLeft() && !map[nearestX - 1][nearestY].getRight() && moveArr[nearestY][nearestX - 1] == moveArr[nearestY][nearestX] + 1) || (distanceXLTraveled % dist != 0)) && rotation >= Math.PI - tolerance && rotation <= Math.PI + tolerance) {
+    if (shot) {
+      rotation += 0.18;
+      move();
+      if ((originalRotation <= tolerance || originalRotation >= Math.PI * 2 - tolerance) && (rotation <= tolerance || rotation >= Math.PI * 2 - tolerance)) {
+        shot = false;
+      }
+      if (rotation >= originalRotation - tolerance && rotation <= originalRotation + tolerance) {
+        shot = false;
+      }
+    }
+    else if (((nearestX > 0 && !start.getLeft() && !map[nearestX - 1][nearestY].getRight() && moveArr[nearestY][nearestX - 1] == moveArr[nearestY][nearestX] + 1) || (distanceXLTraveled % dist != 0)) && rotation >= Math.PI - tolerance && rotation <= Math.PI + tolerance) {
         x -= 1.25;
         distanceXLTraveled += 3;
     }
@@ -62,7 +75,6 @@ public class NPCTank extends Tank {
         distanceYDTraveled += 3;
     }
     else {
-      System.out.println(distanceXLTraveled % dist + distanceXRTraveled % dist + distanceYUTraveled % dist + distanceYDTraveled % dist);
       rotation += 0.18;
       move();
     }
