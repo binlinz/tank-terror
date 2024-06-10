@@ -80,12 +80,22 @@ void npcSelection() {
   image(tank, 150, 75);
   PImage npc = loadImage("npc.png");
   image(npc, 375, 500);
-  PImage npc1 = loadImage("1.png");
-  image(npc1, 275, 625);
-  PImage npc2 = loadImage("2.png");
-  image(npc2, 450, 625);
-  PImage npc3 = loadImage("3.png");
-  image(npc3, 625, 628);
+  if(!multiPlayer) { 
+    PImage npc1 = loadImage("1.png");
+    image(npc1, 275, 625);
+    PImage npc2 = loadImage("2.png");
+    image(npc2, 450, 625);
+    PImage npc3 = loadImage("3.png");
+    image(npc3, 625, 628);
+  } else {
+    PImage npc1 = loadImage("zero.png");
+    image(npc1, 275, 625);
+    PImage npc2 = loadImage("one.png");
+    image(npc2, 450, 620);
+    PImage npc3 = loadImage("two.png");
+    image(npc3, 625, 623);
+  }
+  
 }
   
 void keyPressed() {
@@ -113,7 +123,7 @@ public void draw(){
         gameStarted = true; 
         roundStarted = false;
         roundEnd = true;
-        displayScore();
+        displayWin();
       }
     }
     else {
@@ -121,21 +131,21 @@ public void draw(){
         gameStarted = true; 
         roundStarted = false;
         roundEnd = true;
-        displayScore();
+        displayWin();
       }
       else if (round.win() == 1) {
         player1Score++;
         gameStarted = true; 
         roundStarted = false;
         roundEnd = true;
-        displayScore();
+        displayWin();
       }
       else if (round.win() == 2) {
         player2Score++;
         gameStarted = true; 
         roundStarted = false;
         roundEnd = true;
-        displayScore();
+        displayWin();
       }
       if (player1Score >= 5 || player2Score >= 5) {
         gameStarted = false;
@@ -144,7 +154,6 @@ public void draw(){
     }
   }
   if (!gameStarted && roundEnd) {
-    //displayScore();
     displayWin();
   }
 }
@@ -157,17 +166,17 @@ public void startRound(){
   }
 }
 
-public void displayScore(){
-  // REMEMBER TO ADD TEXT OR DOCUMENTATION SO PEOPLE KNOW WHO IS P1 AND P2 
-  // THIS IS A PRIMITIVE PLACEHOLDER FOR AN ACTUALY SCORE BOARD
-  delay(1000);
-  if (multiPlayer){
-    System.out.println("Player One Score: " + player1Score + " --- " + "Player Two Score: " + player2Score); 
-  }
-  else{
-    System.out.println("Score: " + player1Score); 
-  }
-}
+//public void displayScore(){
+//  // REMEMBER TO ADD TEXT OR DOCUMENTATION SO PEOPLE KNOW WHO IS P1 AND P2 
+//  // THIS IS A PRIMITIVE PLACEHOLDER FOR AN ACTUALY SCORE BOARD
+//  delay(1000);
+//  if (multiPlayer){
+//    System.out.println("Player One Score: " + player1Score + " --- " + "Player Two Score: " + player2Score); 
+//  }
+//  else{
+//    System.out.println("Score: " + player1Score); 
+//  }
+//}
 
 public void displayWin(){
   background(255);
@@ -176,19 +185,9 @@ public void displayWin(){
   if((player1Score == player2Score) || !multiPlayer) { 
     r1 = 0; g1 = 0; b1 = 0; r2 = 0; g2 = 0; b2 = 0;
   } else if(player1Score > player2Score) { 
-    r1 = 35; 
-    g1 = 101; 
-    b1 = 51;
-    r2 = 217; 
-    g2 = 33;
-    b2 = 33;
+    r1 = 35; g1 = 101; b1 = 51; r2 = 217; g2 = 33; b2 = 33;
   } else { 
-    r1 = 217; 
-    g1 = 33; 
-    b1 = 33;
-    r2 = 35; 
-    g2 = 101;
-    b2 = 51;
+    r1 = 217; g1 = 33; b1 = 33; r2 = 35; g2 = 101; b2 = 51;
   }
   image(score, 210, 250);
   textSize(130);

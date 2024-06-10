@@ -16,6 +16,6 @@ public class Phase extends Bullet {
     if (position.y >= width - 18 && velocity.y > 0) {
       velocity.y *= -1;
     }
-
   }
+  
 } 

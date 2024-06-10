@@ -18,9 +18,7 @@ public class Laser extends Bullet {
           break; 
         }
       }
-
     }
-  }
-  
+  } 
   
 } 

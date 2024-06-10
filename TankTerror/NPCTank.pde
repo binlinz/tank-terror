@@ -80,12 +80,7 @@ public class NPCTank extends Tank {
     }
     if (moveArr[nearestY][nearestX] >= 97) {
       attack();
-    }
-    
+    }    
   } 
-
-  public void nearestTank(){
-
-  }
   
 } 

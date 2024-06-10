@@ -93,16 +93,6 @@ public class Maze{
     }
   }
   
-  
-//  public void display() {
-//    for (int i = 0; i < 8; i++) {
-//      for (int j = 0; j < 8; j++) {
-//        if (map[i][j].getVisit()) {
-//          rect(i * 125, j * 125, 20, 20);
-//        }
-//      }
-//    }
-//  }
   public int tagVisit(int i, int j){
     MazeUnit start = map[i][j];
     start.visited();

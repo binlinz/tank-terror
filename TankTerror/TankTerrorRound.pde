@@ -101,13 +101,7 @@ public class TankTerrorRound {
   for (int i = 0; i < powerUps.size(); i++) {
       powerUps.get(i).display();
   }
-
-    //map.display();
 }
-  
-  public void spawnPowerUp() {
-    
-  }
   
   public int win() {
     if (!multiplayer) {
