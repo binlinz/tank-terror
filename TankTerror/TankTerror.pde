@@ -8,6 +8,8 @@ boolean roundStarted;
 boolean[] keys = new boolean[200]; 
 int numNPC;
 boolean NPCSelection;
+boolean displayWin;
+int timeStart;
 
 void setup(){
   gameStarted = false;
@@ -50,27 +52,47 @@ void mousePressed(){
     roundEnd = true;
   }
   else if (!NPCSelection) {
+    if (multiPlayer) {
+      if (mouseX >= 275 && mouseX <= 375 && mouseY <= 745 && mouseY >= 625){
+        numNPC = 0;
+        gameStarted = true;
+        background(183,233,246);
+        NPCSelection = true;
+      }
+      if (mouseX >= 450 && mouseX <= 550 && mouseY <= 745 && mouseY >= 625){
+        numNPC = 1;
+        gameStarted = true;
+        background(183,233,246);
+        NPCSelection = true;
+      }
+      if (mouseX >= 625 && mouseX <= 725 && mouseY <= 745 && mouseY >= 625){
+        numNPC = 2;
+        gameStarted = true;
+        background(183,233,246);
+        NPCSelection = true;
+      }
+
+    }
+    else {
       if (mouseX >= 275 && mouseX <= 375 && mouseY <= 745 && mouseY >= 625){
         numNPC = 1;
-        print(1);
         gameStarted = true;
         background(183,233,246);
         NPCSelection = true;
       }
       if (mouseX >= 450 && mouseX <= 550 && mouseY <= 745 && mouseY >= 625){
         numNPC = 2;
-        print(2);
         gameStarted = true;
         background(183,233,246);
         NPCSelection = true;
       }
       if (mouseX >= 625 && mouseX <= 725 && mouseY <= 745 && mouseY >= 625){
         numNPC = 3;
-        print(3);
         gameStarted = true;
         background(183,233,246);
         NPCSelection = true;
       }
+    }
   }
 }
 
@@ -101,6 +123,7 @@ public void draw(){
     startRound();    
   }
   if (gameStarted && NPCSelection) {
+<<<<<<< Updated upstream
     background(183,233,246);
     round.advanceRound();
     if (!multiPlayer) {
@@ -140,12 +163,69 @@ public void draw(){
       if (player1Score >= 5 || player2Score >= 5) {
         gameStarted = false;
         roundEnd = true;
+=======
+    if (displayWin) {
+      displayWin();
+      if (millis() - timeStart >= 1000) {
+      displayWin = false;
+      }
+    }
+    else {
+      background(183,233,246);
+      round.advanceRound();
+      if (!multiPlayer) {
+        if (round.win() == 0) {
+          gameStarted = false;
+          roundEnd = true;
+        }
+        else if (round.win() == 1) {
+          player1Score++;
+          gameStarted = true; 
+          roundStarted = false;
+          roundEnd = true;
+          timeStart = millis();
+          displayWin = true;
+        }
+      }
+      else {
+        if (round.win() == 0) {
+          gameStarted = true; 
+          roundStarted = false;
+          roundEnd = true;
+          timeStart = millis();
+          displayWin = true;
+        }
+        else if (round.win() == 1) {
+          player1Score++;
+          gameStarted = true; 
+          roundStarted = false;
+          roundEnd = true;
+          timeStart = millis();
+          displayWin = true;
+        }
+        else if (round.win() == 2) {
+          player2Score++;
+          gameStarted = true; 
+          roundStarted = false;
+          roundEnd = true;
+          timeStart = millis();
+          displayWin = true;
+        }
+        if (player1Score >= 5 || player2Score >= 5) {
+          gameStarted = false;
+          roundEnd = true;
+        }
+>>>>>>> Stashed changes
       }
     }
   }
   if (!gameStarted && roundEnd) {
+<<<<<<< Updated upstream
     //displayScore();
     displayWin();
+=======
+      displayWin();
+>>>>>>> Stashed changes
   }
 }
 
@@ -158,6 +238,7 @@ public void startRound(){
 }
 
 public void displayScore(){
+<<<<<<< Updated upstream
   // REMEMBER TO ADD TEXT OR DOCUMENTATION SO PEOPLE KNOW WHO IS P1 AND P2 
   // THIS IS A PRIMITIVE PLACEHOLDER FOR AN ACTUALY SCORE BOARD
   delay(1000);
@@ -170,6 +251,8 @@ public void displayScore(){
 }
 
 public void displayWin(){
+=======
+>>>>>>> Stashed changes
   background(255);
   PImage score = loadImage("score.png");
   int r1, g1, b1, r2, g2, b2;
@@ -208,4 +291,9 @@ public void displayWin(){
     textSize(40);
     text("Player 2", 625, 650);
   }
+
+}
+
+public void displayWin(){
+  // win screens
 }
