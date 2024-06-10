@@ -133,49 +133,8 @@ public void draw(){
     startRound();    
   }
   if (gameStarted && NPCSelection) {
-<<<<<<< Updated upstream
-    background(183,233,246);
-    round.advanceRound();
-    if (!multiPlayer) {
-      if (round.win() == 0) {
-        gameStarted = false;
-        roundEnd = true;
-      }
-      else if (round.win() == 1) {
-        player1Score++;
-        gameStarted = true; 
-        roundStarted = false;
-        roundEnd = true;
-        displayWin();
-      }
-    }
-    else {
-      if (round.win() == 0) {
-        gameStarted = true; 
-        roundStarted = false;
-        roundEnd = true;
-        displayWin();
-      }
-      else if (round.win() == 1) {
-        player1Score++;
-        gameStarted = true; 
-        roundStarted = false;
-        roundEnd = true;
-        displayWin();
-      }
-      else if (round.win() == 2) {
-        player2Score++;
-        gameStarted = true; 
-        roundStarted = false;
-        roundEnd = true;
-        displayWin();
-      }
-      if (player1Score >= 5 || player2Score >= 5) {
-        gameStarted = false;
-        roundEnd = true;
-=======
     if (displayWin) {
-      displayWin();
+      displayScore();
       if (millis() - timeStart >= 1000) {
       displayWin = false;
       }
@@ -225,20 +184,11 @@ public void draw(){
           gameStarted = false;
           roundEnd = true;
         }
->>>>>>> Stashed changes
       }
     }
   }
   if (!gameStarted && roundEnd) {
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-    //displayScore();
->>>>>>> bin
     displayWin();
-=======
-      displayWin();
->>>>>>> Stashed changes
   }
 }
 
@@ -250,36 +200,7 @@ public void startRound(){
   }
 }
 
-<<<<<<< HEAD
-//public void displayScore(){
-//  // REMEMBER TO ADD TEXT OR DOCUMENTATION SO PEOPLE KNOW WHO IS P1 AND P2 
-//  // THIS IS A PRIMITIVE PLACEHOLDER FOR AN ACTUALY SCORE BOARD
-//  delay(1000);
-//  if (multiPlayer){
-//    System.out.println("Player One Score: " + player1Score + " --- " + "Player Two Score: " + player2Score); 
-//  }
-//  else{
-//    System.out.println("Score: " + player1Score); 
-//  }
-//}
-=======
 public void displayScore(){
-<<<<<<< Updated upstream
-  // REMEMBER TO ADD TEXT OR DOCUMENTATION SO PEOPLE KNOW WHO IS P1 AND P2 
-  // THIS IS A PRIMITIVE PLACEHOLDER FOR AN ACTUALY SCORE BOARD
-  delay(1000);
-  if (multiPlayer){
-    System.out.println("Player One Score: " + player1Score + " --- " + "Player Two Score: " + player2Score); 
-  }
-  else{
-    System.out.println("Score: " + player1Score); 
-  }
-}
->>>>>>> bin
-
-public void displayWin(){
-=======
->>>>>>> Stashed changes
   background(255);
   PImage score = loadImage("score.png");
   int r1, g1, b1, r2, g2, b2;
