@@ -11,7 +11,7 @@ public class Detector{
   
   public boolean detect(){
     color pixel = get(x, y);
-    if (red(pixel) >= 200 && blue(pixel) >= 200 && green(pixel) >= 200){
+    if (red(pixel) >= 230 && blue(pixel) >= 230 && green(pixel) >= 230){
       return true;
     }
     return false;
