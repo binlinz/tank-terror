@@ -6,6 +6,8 @@ public class PlayerTank extends Tank {
   public int timeBetweenBullets;
   public int timeStartRapid;
   private boolean rapid;
+  public int unitX;
+  public int unitY;
   
   public PlayerTank(int num) { 
     super((int)(Math.random() * 8) * 125 + 72, (int)(Math.random() * 8) * 125 + 72, num);
@@ -112,6 +114,7 @@ public class PlayerTank extends Tank {
     }
   } 
   
+
   public void calcNPCArr(int[][] arr, int x, int y, int curr) { 
     if (curr <= arr[y][x]) {
       return;

@@ -12,8 +12,6 @@ abstract class Tank{
   Detector BorderDR;
   Detector BorderUL;
   Detector BorderDL;
-  public int unitX;
-  public int unitY;
   public boolean isPlayerTank;
   int num;
   

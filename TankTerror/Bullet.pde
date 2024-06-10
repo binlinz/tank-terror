@@ -12,6 +12,7 @@ public class Bullet {
   //private float rotation;
   public boolean active;
   int bulletLength;
+  public boolean npcBullet;
 
   public Bullet(float x, float y, Tank parent) {
       parentTank = parent;
@@ -21,11 +22,20 @@ public class Bullet {
       timeCreated = millis();
       active = true;
       bulletLength = 8500;
-  }
+      if (parent.isPlayerTank == false){
+        npcBullet = true;
+      }
+    }
   
   public void display() {
-      fill(0);
-      circle(position.x, position.y, 11);
+      if (npcBullet){
+        fill (255, 0, 0);
+        circle(position.x, position.y, 11);
+      }
+      else{
+        fill(0);
+        circle(position.x, position.y, 11);
+      }
   }
 
   public void advance() {
@@ -40,6 +50,9 @@ public class Bullet {
 
   public boolean destroyed(Tank tank) {
     float distance = dist(position.x, position.y, tank.x, tank.y);
+    if (tank.isPlayerTank == false && npcBullet == true){
+      return false;
+    }
     return distance < 30; 
 }
 
