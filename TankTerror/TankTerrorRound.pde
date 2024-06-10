@@ -20,7 +20,7 @@ public class TankTerrorRound {
   
   public void generateMap() {
     map = new Maze(8, 8, 125);
-    while (map.countWalls() < 70){
+    while (map.countWalls() < 80){
       map = new Maze(8, 8, 125);
     }
     map.makeMaze();
@@ -31,11 +31,6 @@ public class TankTerrorRound {
     for (int i = 0; i < numNPC; i++) {
       NPCs.add(new NPCTank(3));
     }
-    map = new Maze(8, 8, 125);
-    while (map.countWalls() < 90){
-      map = new Maze(8, 8, 125);
-    }
-    map.makeMaze();
     timeCreated = millis() + 4000;
   }
   
