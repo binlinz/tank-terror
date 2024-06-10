@@ -14,11 +14,7 @@ abstract class Tank{
   Detector BorderDL;
   public boolean isPlayerTank;
   int num;
-  
-  public Tank() {
     
-  }
-  
   public Tank(float x, float y, int num){
     this.num = num;
     bulletTimer = 5;
