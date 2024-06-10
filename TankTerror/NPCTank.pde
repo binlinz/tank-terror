@@ -55,11 +55,8 @@ public class NPCTank extends Tank {
       rotation += 0.18;
       move();
     }
-
-    
   } 
 
-  
   public void nearestTank(){
 
   }

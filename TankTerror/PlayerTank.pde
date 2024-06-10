@@ -41,7 +41,6 @@ public class PlayerTank extends Tank {
     }
   }
   
-  
   public void shoot() {
     if (playerPower.size() > 0 && !rapid) {
       PowerUp p = playerPower.get(0);
@@ -69,6 +68,7 @@ public class PlayerTank extends Tank {
       round.bullets.add(bullet);
     }
   }
+  
   public void move() { 
     if (player == 1) {
         if ((keys['w'] || keys['W']) && canMoveForward()) { 
