@@ -10,19 +10,27 @@ public class Laser extends Bullet {
         display();
         super.advance();
         bounce();
+        boolean removed = false;
+
       for (int j = round.tanks.size() - 1; j >= 0; j--) {
         Tank tank = round.tanks.get(j);
         if (this.destroyed(tank)) {
           round.tanks.remove(j);
-          round.bullets.remove(this);
-          break; 
+          if (!removed) {
+            round.bullets.remove(this);
+            removed = true;
+          }
+          break;
         }
       }
       for (int j = round.NPCs.size() - 1; j >= 0; j--) {
           Tank npc = round.NPCs.get(j);
         if (this.destroyed(npc)){
           round.NPCs.remove(j);
-          round.bullets.remove(i);
+          if (!removed) {
+            round.bullets.remove(this);
+            removed = true;
+          }
           break;
         }
        }
