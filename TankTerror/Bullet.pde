@@ -69,22 +69,22 @@ public class Bullet {
     color pixelR = get((int)checkRightPosition.x, (int)checkRightPosition.y);
     color pixelU = get((int)checkUpPosition.x, (int)checkUpPosition.y);
     color pixelD = get((int)checkDownPosition.x, (int)checkDownPosition.y);
-    if (red(pixelL) >= 200 && blue(pixelL) >= 200 && green(pixelL) >= 200){
+    if (red(pixelL) >= 250 && blue(pixelL) >= 250 && green(pixelL) >= 250){
       if (velocity.x < 0) {
         velocity.x *= -1;
       }
     }
-    if (red(pixelR) >= 200 && blue(pixelR) >= 200 && green(pixelR) >= 200){
+    if (red(pixelR) >= 250 && blue(pixelR) >= 250 && green(pixelR) >= 250){
       if (velocity.x > 0) {
         velocity.x *= -1;
       }
     }
-    if (red(pixelU) >= 200 && blue(pixelU) >= 200 && green(pixelU) >= 200){
+    if (red(pixelU) >= 250 && blue(pixelU) >= 250 && green(pixelU) >= 250){
       if (velocity.y < 0) {
         velocity.y *= -1;
       }
     }
-    if (red(pixelD) >= 200 && blue(pixelD) >= 200 && green(pixelD) >= 200){
+    if (red(pixelD) >= 250 && blue(pixelD) >= 250 && green(pixelD) >= 250){
       if (velocity.y > 0) {
         velocity.y *= -1;
       }
