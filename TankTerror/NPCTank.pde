@@ -58,19 +58,19 @@ public class NPCTank extends Tank {
         shot = false;
       }
     }
-    else if (((nearestX > 0 && !start.getLeft() && !map[nearestX - 1][nearestY].getRight() && moveArr[nearestY][nearestX - 1] == moveArr[nearestY][nearestX] + 1) || (distanceXLTraveled % dist != 0)) && rotation >= Math.PI - tolerance && rotation <= Math.PI + tolerance) {
+    else if (((nearestX > 0 && !start.getLeft() && !map[nearestX - 1][nearestY].getRight() && moveArr[nearestY][nearestX - 1] == moveArr[nearestY][nearestX] + 1)) && rotation >= Math.PI - tolerance && rotation <= Math.PI + tolerance || (distanceXLTraveled % dist != 0)) {
         x -= 1.25;
         distanceXLTraveled += 3;
     }
-    else if ((nearestX < round.map.mazeCols - 1 && !start.getRight() && !map[nearestX + 1][nearestY].getLeft() && moveArr[nearestY][nearestX + 1] == moveArr[nearestY][nearestX] + 1 || distanceXRTraveled % dist != 0) && (rotation >= Math.PI * 2 - tolerance || rotation < tolerance)) {
+    else if ((nearestX < round.map.mazeCols - 1 && !start.getRight() && !map[nearestX + 1][nearestY].getLeft() && moveArr[nearestY][nearestX + 1] == moveArr[nearestY][nearestX] + 1) && (rotation >= Math.PI * 2 - tolerance || rotation < tolerance) || distanceXRTraveled % dist != 0) {
         x += 1.25;
         distanceXRTraveled += 3;
     }
-    else if ((nearestY > 0 && !start.getUp() && !map[nearestX][nearestY - 1].getDown() && moveArr[nearestY - 1][nearestX] == moveArr[nearestY][nearestX] + 1 || distanceYUTraveled % dist != 0) && rotation >= Math.PI * 3/2 - tolerance && rotation <= Math.PI * 3/2 + tolerance) {
+    else if ((nearestY > 0 && !start.getUp() && !map[nearestX][nearestY - 1].getDown() && moveArr[nearestY - 1][nearestX] == moveArr[nearestY][nearestX] + 1) && rotation >= Math.PI * 3/2 - tolerance && rotation <= Math.PI * 3/2 + tolerance || distanceYUTraveled % dist != 0) {
         y -= 1.25;
         distanceYUTraveled += 3;
     }
-    else if ((nearestY < round.map.mazeRows - 1 && !start.getDown() && !map[nearestX][nearestY + 1].getUp() && moveArr[nearestY + 1][nearestX] == moveArr[nearestY][nearestX] + 1 || distanceYDTraveled % dist != 0) && rotation >= Math.PI * 1/2 - tolerance && rotation <= Math.PI * 1/2 + tolerance) {
+    else if ((nearestY < round.map.mazeRows - 1 && !start.getDown() && !map[nearestX][nearestY + 1].getUp() && moveArr[nearestY + 1][nearestX] == moveArr[nearestY][nearestX] + 1) && rotation >= Math.PI * 1/2 - tolerance && rotation <= Math.PI * 1/2 + tolerance || distanceYDTraveled % dist != 0) {
         y += 1.25;
         distanceYDTraveled += 3;
     }
